@@ -19,4 +19,5 @@ export const authOptions = {
   debug: process.env.NODE_ENV === 'production',
 };
 
-export default NextAuth(authOptions);
+const handler = NextAuth(authOptions);
+export { handler as GET, handler as POST };
