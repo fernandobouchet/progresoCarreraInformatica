@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
 
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import NavItems from './NavItems';
+import { NavItems } from './NavItems';
 
 export function MobileMenu() {
   return (

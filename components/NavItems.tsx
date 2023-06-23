@@ -116,4 +116,4 @@ const NavItems = () => {
     </>
   );
 };
-export default NavItems;
+export { NavItems };

@@ -1,6 +1,6 @@
-import Navigation from '@/components/Navigation';
 import './globals.css';
 import Provider from '@/context/AuthContext';
+import { Navigation } from '@/components/Navigation';
 
 export const metadata = {
   title: 'Create Next App',

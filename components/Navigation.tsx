@@ -16,4 +16,4 @@ const Navigation = ({ children }: Props) => {
     </div>
   );
 };
-export default Navigation;
+export { Navigation };
