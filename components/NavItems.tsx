@@ -46,7 +46,7 @@ const NavItems = () => {
           pathname === '/'
             ? 'bg-blue-100 hover:bg-muted'
             : 'hover:bg-transparent hover:bg-slate-200',
-          'justify-start text-lg'
+          'justify-start text-base'
         )}
       >
         <HomeIcon className="w-4 h-4 mr-2" />
@@ -59,7 +59,7 @@ const NavItems = () => {
           pathname === '/licenciatura'
             ? 'bg-blue-100 hover:bg-muted'
             : 'hover:bg-transparent hover:bg-slate-200',
-          'justify-start text-lg'
+          'justify-start text-base'
         )}
       >
         <GraduationCapIcon className="w-4 h-4 mr-2" />
@@ -73,7 +73,7 @@ const NavItems = () => {
               pathname === '*/tecnicatura/*'
                 ? 'bg-blue-100 hover:bg-muted'
                 : 'hover:bg-transparent hover:bg-slate-200 hover:no-underline',
-              'flex justify-between text-lg'
+              'flex justify-between text-base'
             )}
           >
             <div className="flex items-center">
@@ -91,7 +91,7 @@ const NavItems = () => {
                   pathname === item.href
                     ? 'bg-blue-100 hover:bg-muted'
                     : 'hover:bg-transparent hover:bg-slate-200',
-                  'justify-start text-lg w-full'
+                  'justify-start text-base w-full'
                 )}
               >
                 {item.title}
@@ -107,7 +107,7 @@ const NavItems = () => {
           pathname === '/creditos'
             ? 'bg-blue-100 hover:bg-muted'
             : 'hover:bg-transparent hover:bg-slate-200',
-          'justify-start text-lg'
+          'justify-start text-base'
         )}
       >
         <StarIcon className="w-4 h-4 mr-2" />
