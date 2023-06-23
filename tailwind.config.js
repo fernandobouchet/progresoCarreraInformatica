@@ -16,6 +16,12 @@ module.exports = {
       },
     },
     extend: {
+      width: {
+        'screen': '100dvw',
+      },
+      height: {
+        'screen': '100dvh',
+      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },
