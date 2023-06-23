@@ -1,3 +1,4 @@
+import Navigation from '@/components/Navigation';
 import './globals.css';
 import Provider from '@/context/AuthContext';
 
@@ -14,7 +15,9 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body>
-        <Provider>{children}</Provider>
+        <Provider>
+          <Navigation>{children}</Navigation>
+        </Provider>
       </body>
     </html>
   );
