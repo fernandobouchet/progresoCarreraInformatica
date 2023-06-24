@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="es">
       <body>
         <Provider>
-          <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Navigation>{children}</Navigation>
           </ThemeProvider>
         </Provider>

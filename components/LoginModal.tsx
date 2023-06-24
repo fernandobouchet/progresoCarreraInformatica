@@ -11,7 +11,7 @@ import { signIn } from 'next-auth/react';
 
 const LoginModal = () => {
   return (
-    <DialogContent className="sm:max-w-[425px]">
+    <DialogContent className="sm:max-w-[425px] bg-slate-200 dark:bg-neutral-800 border-none">
       <DialogHeader>
         <DialogTitle>Inicio de sesión</DialogTitle>
         <DialogDescription>

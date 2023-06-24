@@ -3,35 +3,61 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
+import ThemeToggle from './ui/ThemeToggle';
+import { Icons } from './Icons';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { HomeIcon, AwardIcon, StarIcon, GraduationCapIcon } from 'lucide-react';
-import ThemeToggle from './ui/ThemeToggle';
+
+const TopItems = [
+  {
+    title: 'Inicio',
+    href: '/',
+    icon: <Icons.home className="h-4 w-4 mr-2" />,
+  },
+  {
+    title: 'Licenciatura',
+    href: '/licenciatura',
+    icon: <Icons.graduation className="h-4 w-4 mr-2" />,
+  },
+];
 
 const AccordionItems = [
   {
     title: 'Informática',
     href: '/tecnicatura/informatica',
+    icon: <Icons.computer className="h-4 w-4 mr-2" />,
   },
   {
     title: 'Programación',
     href: '/tecnicatura/programacion',
+    icon: <Icons.terminal className="h-4 w-4 mr-2" />,
   },
   {
-    title: 'Redes y operaciones informáticas',
+    title: 'Redes',
     href: '/tecnicatura/redes-y-operaciones',
+    icon: <Icons.server className="h-4 w-4 mr-2" />,
   },
   {
     title: 'Inteligencia artificial',
     href: '/tecnicatura/inteligencia-artificial',
+    icon: <Icons.cpu className="h-4 w-4 mr-2" />,
   },
   {
     title: 'Videojuegos',
     href: '/tecnicatura/videojuegos',
+    icon: <Icons.gamepad className="h-4 w-4 mr-2" />,
+  },
+];
+
+const BottomItems = [
+  {
+    title: 'Créditos',
+    href: '/creditos',
+    icon: <Icons.star className="h-4 w-4 mr-2" />,
   },
 ];
 
@@ -40,49 +66,39 @@ const NavItems = () => {
 
   return (
     <>
-      <Link
-        href={'/'}
-        className={cn(
-          buttonVariants({ variant: 'ghost' }),
-          pathname === '/'
-            ? 'bg-blue-100 hover:bg-muted'
-            : 'hover:bg-transparent hover:bg-slate-200',
-          'justify-start text-base'
-        )}
-      >
-        <HomeIcon className="w-4 h-4 mr-2" />
-        Inicio
-      </Link>
-      <Link
-        href={'/licenciatura'}
-        className={cn(
-          buttonVariants({ variant: 'ghost' }),
-          pathname === '/licenciatura'
-            ? 'bg-blue-100 hover:bg-muted'
-            : 'hover:bg-transparent hover:bg-slate-200',
-          'justify-start text-base'
-        )}
-      >
-        <GraduationCapIcon className="w-4 h-4 mr-2" />
-        Licenciatura
-      </Link>
+      {TopItems.map((item) => (
+        <Link
+          key={item.href}
+          href={item.href}
+          className={cn(
+            buttonVariants({ variant: 'ghost' }),
+            pathname === item.href
+              ? 'bg-sky-200 dark:bg-sky-800 hover:bg-muted dark:hover:bg-muted'
+              : 'hover:bg-slate-300 dark:hover:bg-neutral-700',
+            'justify-start text-base w-full rounded-full py-6'
+          )}
+        >
+          {item.icon}
+          {item.title}
+        </Link>
+      ))}
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1" className="border-none">
           <AccordionTrigger
             className={cn(
               buttonVariants({ variant: 'ghost' }),
-              pathname === '*/tecnicatura/*'
-                ? 'bg-blue-100 hover:bg-muted'
-                : 'hover:bg-transparent hover:bg-slate-200 hover:no-underline',
-              'flex justify-between text-base'
+              pathname === '/tecnicatura/*'
+                ? 'bg-sky-200 dark:bg-sky-800 hover:bg-muted dark:hover:bg-muted'
+                : 'hover:bg-slate-300 dark:hover:bg-neutral-700 hover:no-underline',
+              'flex justify-between text-base rounded-full py-6'
             )}
           >
             <div className="flex items-center">
-              <AwardIcon className="w-4 h-4 mr-2" />
-              Tecnicatura
+              <Icons.award className="w-4 h-4 mr-2" />
+              Tecnicaturas
             </div>
           </AccordionTrigger>
-          <AccordionContent className="pb-0">
+          <AccordionContent>
             {AccordionItems.map((item) => (
               <Link
                 key={item.href}
@@ -90,30 +106,34 @@ const NavItems = () => {
                 className={cn(
                   buttonVariants({ variant: 'ghost' }),
                   pathname === item.href
-                    ? 'bg-blue-100 hover:bg-muted'
-                    : 'hover:bg-transparent hover:bg-slate-200',
-                  'justify-start text-base w-full'
+                    ? 'bg-sky-200 dark:bg-sky-800 hover:bg-muted dark:hover:bg-muted'
+                    : 'hover:bg-slate-300 dark:hover:bg-neutral-700',
+                  'justify-start text-base w-full rounded-full py-6'
                 )}
               >
+                {item.icon}
                 {item.title}
               </Link>
             ))}
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-      <Link
-        href={'/creditos'}
-        className={cn(
-          buttonVariants({ variant: 'ghost' }),
-          pathname === '/creditos'
-            ? 'bg-blue-100 hover:bg-muted'
-            : 'hover:bg-transparent hover:bg-slate-200',
-          'justify-start text-base'
-        )}
-      >
-        <StarIcon className="w-4 h-4 mr-2" />
-        Créditos
-      </Link>
+      {BottomItems.map((item) => (
+        <Link
+          key={item.href}
+          href={item.href}
+          className={cn(
+            buttonVariants({ variant: 'ghost' }),
+            pathname === item.href
+              ? 'bg-sky-200 dark:bg-sky-800 hover:bg-muted dark:hover:bg-muted'
+              : 'hover:bg-slate-300 dark:hover:bg-neutral-700',
+            'justify-start text-base w-full rounded-full py-6'
+          )}
+        >
+          {item.icon}
+          {item.title}
+        </Link>
+      ))}
       <div className="mt-auto ml-auto mb-3">
         <ThemeToggle />
       </div>

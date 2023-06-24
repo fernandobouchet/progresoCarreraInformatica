@@ -7,7 +7,7 @@ interface Props {
 
 const Navigation = ({ children }: Props) => {
   return (
-    <div className="h-screen w-screen">
+    <div className="h-screen w-screen bg-slate-100 dark:bg-neutral-900">
       <Topbar />
       <div className="flex">
         <Sidebar />

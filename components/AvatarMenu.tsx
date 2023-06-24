@@ -1,7 +1,6 @@
 'use client';
 
 import { signOut, useSession } from 'next-auth/react';
-import { LogOut, Settings, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -15,6 +14,7 @@ import {
 import { Dialog, DialogTrigger } from '@/components/ui/dialog';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { LoginModal } from './LoginModal';
+import { Icons } from './Icons';
 
 export function AvatarMenu() {
   const { status, data: session } = useSession();
@@ -41,7 +41,11 @@ export function AvatarMenu() {
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56" align="end" forceMount>
+          <DropdownMenuContent
+            className="w-56 bg-slate-200 dark:bg-neutral-800"
+            align="end"
+            forceMount
+          >
             <DropdownMenuLabel className="font-normal">
               <div className="flex flex-col space-y-1">
                 <p className="text-sm font-medium leading-none">
@@ -55,17 +59,17 @@ export function AvatarMenu() {
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <User className="mr-2 h-4 w-4" />
+                <Icons.user className="mr-2 h-4 w-4" />
                 <span>Perfil</span>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Settings className="mr-2 h-4 w-4" />
+                <Icons.settings className="mr-2 h-4 w-4" />
                 <span>Ajustes</span>
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => signOut()}>
-              <LogOut className="mr-2 h-4 w-4" />
+              <Icons.logout className="mr-2 h-4 w-4" />
               <span>Cerrar sesión</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
