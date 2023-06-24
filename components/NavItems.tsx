@@ -10,6 +10,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { HomeIcon, AwardIcon, StarIcon, GraduationCapIcon } from 'lucide-react';
+import ThemeToggle from './ui/ThemeToggle';
 
 const AccordionItems = [
   {
@@ -113,6 +114,9 @@ const NavItems = () => {
         <StarIcon className="w-4 h-4 mr-2" />
         Créditos
       </Link>
+      <div className="mt-auto ml-auto mb-3">
+        <ThemeToggle />
+      </div>
     </>
   );
 };

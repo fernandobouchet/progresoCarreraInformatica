@@ -14,7 +14,7 @@ export function MobileMenu() {
           </Button>
         </SheetTrigger>
         <SheetContent side={'left'} className="bg-slate-100">
-          <div className="grid gap-4 py-4 pt-8">
+          <div className="flex flex-col gap-4 py-4 pt-8 h-screen">
             <NavItems />
           </div>
         </SheetContent>
