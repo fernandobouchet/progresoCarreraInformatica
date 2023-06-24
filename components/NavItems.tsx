@@ -1,8 +1,7 @@
 'use client';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { cn } from '@/lib/utils';
+import { LinkWithIcon } from './ui/LinkWithIcon';
 import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 import ThemeToggle from './ui/ThemeToggle';
 import { Icons } from './Icons';
 import {
@@ -62,35 +61,17 @@ const BottomItems = [
 ];
 
 const NavItems = () => {
-  const pathname = usePathname();
-
   return (
     <>
       {TopItems.map((item) => (
-        <Link
-          key={item.href}
-          href={item.href}
-          className={cn(
-            buttonVariants({ variant: 'ghost' }),
-            pathname === item.href
-              ? 'bg-sky-200 dark:bg-sky-800 hover:bg-muted dark:hover:bg-muted'
-              : 'hover:bg-slate-300 dark:hover:bg-neutral-700',
-            'justify-start text-base w-full rounded-full py-6'
-          )}
-        >
-          {item.icon}
-          {item.title}
-        </Link>
+        <LinkWithIcon key={item.href} item={item} />
       ))}
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1" className="border-none">
           <AccordionTrigger
             className={cn(
               buttonVariants({ variant: 'ghost' }),
-              pathname === '/tecnicatura/*'
-                ? 'bg-sky-200 dark:bg-sky-800 hover:bg-muted dark:hover:bg-muted'
-                : 'hover:bg-slate-300 dark:hover:bg-neutral-700 hover:no-underline',
-              'flex justify-between text-base rounded-full py-6'
+              'hover:bg-slate-300 dark:hover:bg-neutral-700 hover:no-underline flex justify-between text-base rounded-full py-6'
             )}
           >
             <div className="flex items-center">
@@ -100,39 +81,13 @@ const NavItems = () => {
           </AccordionTrigger>
           <AccordionContent>
             {AccordionItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  buttonVariants({ variant: 'ghost' }),
-                  pathname === item.href
-                    ? 'bg-sky-200 dark:bg-sky-800 hover:bg-muted dark:hover:bg-muted'
-                    : 'hover:bg-slate-300 dark:hover:bg-neutral-700',
-                  'justify-start text-base w-full rounded-full py-6'
-                )}
-              >
-                {item.icon}
-                {item.title}
-              </Link>
+              <LinkWithIcon key={item.href} item={item} />
             ))}
           </AccordionContent>
         </AccordionItem>
       </Accordion>
       {BottomItems.map((item) => (
-        <Link
-          key={item.href}
-          href={item.href}
-          className={cn(
-            buttonVariants({ variant: 'ghost' }),
-            pathname === item.href
-              ? 'bg-sky-200 dark:bg-sky-800 hover:bg-muted dark:hover:bg-muted'
-              : 'hover:bg-slate-300 dark:hover:bg-neutral-700',
-            'justify-start text-base w-full rounded-full py-6'
-          )}
-        >
-          {item.icon}
-          {item.title}
-        </Link>
+        <LinkWithIcon key={item.href} item={item} />
       ))}
       <div className="mt-auto ml-auto mb-3">
         <ThemeToggle />

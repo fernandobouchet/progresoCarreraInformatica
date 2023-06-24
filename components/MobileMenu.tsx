@@ -14,11 +14,9 @@ export function MobileMenu() {
         </SheetTrigger>
         <SheetContent
           side={'left'}
-          className="border-none bg-slate-200 dark:bg-neutral-800"
+          className="h-screen flex flex-col gap-0 border-none pt-20 bg-slate-200 dark:bg-neutral-800"
         >
-          <div className="flex flex-col gap-4 py-4 pt-8 h-screen">
-            <NavItems />
-          </div>
+          <NavItems />
         </SheetContent>
       </Sheet>
     </div>
