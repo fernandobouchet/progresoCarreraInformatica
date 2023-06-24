@@ -16,8 +16,8 @@ model User {
   email          String?   @unique
   emailVerified  DateTime?
   image          String?
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
   accounts       Account[]
   sessions       Session[]
 }
@@ -36,7 +36,7 @@ model Account {
   id_token           String?  @db.String
   session_state      String?
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -46,5 +46,37 @@ model Session {
   sessionToken String   @unique
   userId       String   @db.ObjectId
   expires      DateTime
+
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
+model Career {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  periods Period[]
+}
+
+model Period {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  careerId String   @db.ObjectId
+  courses  Course[]
+
+  career   Career   @relation(fields: [careerId], references: [id], onDelete: Cascade)
+}
+
+model Course {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  periodsId       String[] @db.ObjectId
+  name            String
+  courseNumber    Int      @unique
+  area            String?
+  hsWeekly        Int?
+  hsTotal         Int?
+  hasCorrelatives Boolean  @default(false)
+  hasOptatives    Boolean  @default(false)
+  hasEquivalents  Boolean  @default(false)
+
+  periods Period @relation(fields: [periodsId], references: [id], onDelete: Cascade)
+}
+
+
