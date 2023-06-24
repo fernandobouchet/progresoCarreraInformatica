@@ -1,5 +1,6 @@
 import './globals.css';
 import Provider from '@/context/AuthContext';
+import { ThemeProvider } from '@/context/ThemeContext';
 import { Navigation } from '@/components/Navigation';
 
 export const metadata = {
@@ -16,7 +17,9 @@ export default function RootLayout({
     <html lang="es">
       <body>
         <Provider>
-          <Navigation>{children}</Navigation>
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+            <Navigation>{children}</Navigation>
+          </ThemeProvider>
         </Provider>
       </body>
     </html>
