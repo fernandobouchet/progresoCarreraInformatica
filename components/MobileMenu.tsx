@@ -9,12 +9,12 @@ export function MobileMenu() {
       <Sheet>
         <SheetTrigger asChild>
           <Button variant="ghost" size="icon">
-            <Icons.menu className="h-4 w-4" />
+            <Icons.menu className="h-5 w-5" />
           </Button>
         </SheetTrigger>
         <SheetContent
           side={'left'}
-          className="h-screen flex flex-col gap-0 border-none pt-20 bg-slate-200 dark:bg-neutral-800"
+          className="h-screen flex flex-col gap-0 border-none pt-20 bg-slate-200 dark:bg-neutral-800 rounded-r-lg"
         >
           <NavItems />
         </SheetContent>
