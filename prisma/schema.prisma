@@ -51,32 +51,32 @@ model Session {
 }
 
 model Career {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
   name    String
   periods Period[]
 }
 
 model Period {
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
-  careerId String   @db.ObjectId
-  courses  Course[]
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  careerID   String   @db.ObjectId
+  coursesIDs String[] @db.ObjectId
 
-  career   Career   @relation(fields: [careerId], references: [id], onDelete: Cascade)
+  career     Career   @relation(fields: [careerID], references: [id], onDelete: Cascade)
+  courses    Course[] @relation(fields: [coursesIDs], references: [id])
 }
 
 model Course {
   id              String   @id @default(auto()) @map("_id") @db.ObjectId
-  periodsId       String[] @db.ObjectId
   name            String
-  courseNumber    Int      @unique
   area            String?
   hsWeekly        Int?
   hsTotal         Int?
   hasCorrelatives Boolean  @default(false)
   hasOptatives    Boolean  @default(false)
   hasEquivalents  Boolean  @default(false)
+  periodsIDs      String[] @db.ObjectId
 
-  periods Period @relation(fields: [periodsId], references: [id], onDelete: Cascade)
+  period          Period[] @relation(fields: [periodsIDs], references: [id])  
 }
 
 
