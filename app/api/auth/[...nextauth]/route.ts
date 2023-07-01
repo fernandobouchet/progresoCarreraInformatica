@@ -21,17 +21,17 @@ const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
+    async session({ session, token }) {
+      if (token) {
+        session.user.role = token.role;
+      }
+      return session;
+    },
     async jwt({ token, user }) {
       if (user) {
         token.role = user.role;
       }
       return token;
-    },
-    async session({ session, token }) {
-      if (token?.role) {
-        session.user.role = token.role;
-      }
-      return session;
     },
   },
   debug: process.env.NODE_ENV === 'production',

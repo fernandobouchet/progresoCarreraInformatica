@@ -5,7 +5,7 @@ export default withAuth(
   function middleware(req) {
     if (
       req.nextUrl.pathname === '/admin' &&
-      req.nextauth.token?.role !== 'Administrador'
+      req.nextauth.token?.role !== 'ADMIN'
     ) {
       return new NextResponse('You are not authorized!');
     }
