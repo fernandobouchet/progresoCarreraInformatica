@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { buttonVariants } from '@/components/ui/button';
 import { usePathname } from 'next/navigation';
@@ -9,9 +11,10 @@ interface Props {
     title: string;
     icon: JSX.Element;
   };
+  onOpenChange?: (open: boolean) => void;
 }
 
-const LinkWithIcon = ({ item }: Props) => {
+const LinkWithIcon = ({ item, onOpenChange }: Props) => {
   const pathname = usePathname();
 
   return (
@@ -24,6 +27,7 @@ const LinkWithIcon = ({ item }: Props) => {
           : 'hover:bg-slate-300 dark:hover:bg-neutral-700',
         'justify-start text-base w-full rounded-full py-6'
       )}
+      onClick={() => onOpenChange?.(false)}
     >
       {item.icon}
       {item.title}

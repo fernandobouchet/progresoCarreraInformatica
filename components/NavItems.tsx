@@ -60,11 +60,15 @@ const BottomItems = [
   },
 ];
 
-const NavItems = () => {
+interface Props {
+  onOpenChange?: (open: boolean) => void;
+}
+
+const NavItems = ({ onOpenChange }: Props) => {
   return (
     <>
       {TopItems.map((item) => (
-        <LinkWithIcon key={item.href} item={item} />
+        <LinkWithIcon key={item.href} item={item} onOpenChange={onOpenChange} />
       ))}
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1" className="border-none">
@@ -81,13 +85,17 @@ const NavItems = () => {
           </AccordionTrigger>
           <AccordionContent>
             {AccordionItems.map((item) => (
-              <LinkWithIcon key={item.href} item={item} />
+              <LinkWithIcon
+                key={item.href}
+                item={item}
+                onOpenChange={onOpenChange}
+              />
             ))}
           </AccordionContent>
         </AccordionItem>
       </Accordion>
       {BottomItems.map((item) => (
-        <LinkWithIcon key={item.href} item={item} />
+        <LinkWithIcon key={item.href} item={item} onOpenChange={onOpenChange} />
       ))}
       <div className="mt-auto ml-auto mb-3">
         <ThemeToggle />
