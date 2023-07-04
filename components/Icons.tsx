@@ -15,6 +15,7 @@ import {
   type Icon as LucideIcon,
   User,
   Settings,
+  LogIn,
   LogOut,
 } from 'lucide-react';
 
@@ -26,6 +27,7 @@ export const Icons = {
   cpu: Cpu,
   gamepad: Gamepad,
   graduation: GraduationCap,
+  login: LogIn,
   logout: LogOut,
   home: Home,
   menu: Menu,
