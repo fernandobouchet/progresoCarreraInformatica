@@ -3,6 +3,7 @@ import { Open_Sans } from 'next/font/google';
 import Provider from '@/context/AuthContext';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { Navigation } from '@/components/Navigation';
+import { TrpcProvider } from '@/context/TRPCContext';
 
 const opensans = Open_Sans({ subsets: ['latin'] });
 
@@ -21,7 +22,9 @@ export default function RootLayout({
       <body className={opensans.className}>
         <Provider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <Navigation>{children}</Navigation>
+            <TrpcProvider>
+              <Navigation>{children}</Navigation>
+            </TrpcProvider>
           </ThemeProvider>
         </Provider>
       </body>
