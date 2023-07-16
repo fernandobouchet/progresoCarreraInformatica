@@ -12,13 +12,10 @@ import {
   Award,
   GraduationCap,
   Star,
-  type Icon as LucideIcon,
   User,
   Settings,
   LogOut,
 } from 'lucide-react';
-
-export type Icon = LucideIcon;
 
 export const Icons = {
   award: Award,
