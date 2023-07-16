@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { NavItems } from './NavItems';
-import { Icons } from './Icons';
+import { Icons } from './icons';
 import { useState } from 'react';
 
 export function MobileMenu() {
@@ -18,7 +18,7 @@ export function MobileMenu() {
         </SheetTrigger>
         <SheetContent
           side={'left'}
-          className="h-screen flex flex-col gap-0 border-none pt-20 bg-slate-200 dark:bg-neutral-800 rounded-r-lg"
+          className="h-screen flex flex-col gap-0 border-none pt-20 bg-material-light-surface dark:bg-material-dark-surface rounded-r-lg"
         >
           <NavItems onOpenChange={setOpen} />
         </SheetContent>

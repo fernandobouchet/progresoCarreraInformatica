@@ -16,6 +16,32 @@ module.exports = {
       },
     },
     extend: {
+      colors: {
+        "material-light": {
+          "on-background": "#1f1f1f",
+          "background": "#fff",
+          "on-surface": "#1f1f1f",
+          "surface": "#f8fafd",
+          "on-primary": "#fff",
+          "primary": "#0b57d0",
+          "secondary": "#c2e7ff",
+          "on-secondary": "#001d35",
+          "primary-hover": "#d3e3fd",
+          "surface-hover": "#eff3fa",
+        },
+        "material-dark": {
+          "on-background": "#e3e3e3",
+          "background": "#1f1f1f",
+          "on-surface": "#e3e3e3",
+          "surface": "#28292a",
+          "on-primary": "#062e6f",
+          "primary": "#a8c7fa",
+          "secondary": "#004a77",
+          "on-secondary": "#c2e7ff",
+          "primary-hover": "#d3e3fd",
+          "surface-hover": "#333438",
+        },
+      },
       width: {
         'screen': '100dvw',
       },
@@ -36,6 +62,7 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+
     },
   },
   plugins: [require("tailwindcss-animate")],

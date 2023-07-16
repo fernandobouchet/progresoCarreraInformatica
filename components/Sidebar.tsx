@@ -2,7 +2,7 @@ import { NavItems } from './NavItems';
 
 const Sidebar = () => {
   return (
-    <nav className="hidden lg:flex flex-col w-60 h-[calc(100dvh-4rem)] px-3 bg-slate-200 dark:bg-neutral-800 pt-2">
+    <nav className="hidden lg:flex flex-col w-64 h-[calc(100dvh-4rem)] px-3 bg-material-light-surface dark:bg-material-dark-surface pt-2">
       <NavItems />
     </nav>
   );

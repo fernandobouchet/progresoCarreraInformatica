@@ -3,13 +3,14 @@ import { LinkWithIcon } from './ui/LinkWithIcon';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import ThemeToggle from './ui/ThemeToggle';
-import { Icons } from './Icons';
+import { Icons } from './icons';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { usePathname } from 'next/navigation';
 
 const TopItems = [
   {
@@ -65,6 +66,8 @@ interface Props {
 }
 
 const NavItems = ({ onOpenChange }: Props) => {
+  const pathname = usePathname();
+
   return (
     <>
       {TopItems.map((item) => (
@@ -75,7 +78,10 @@ const NavItems = ({ onOpenChange }: Props) => {
           <AccordionTrigger
             className={cn(
               buttonVariants({ variant: 'ghost' }),
-              'hover:bg-slate-300 dark:hover:bg-neutral-700 hover:no-underline flex justify-between text-base rounded-full py-6'
+              pathname.includes('tecnicatura')
+                ? 'bg-material-light-surface-hover dark:bg-material-dark-surface-hover'
+                : '',
+              'hover:bg-material-light-surface-hover dark:hover:bg-material-dark-surface-hover hover:no-underline flex justify-between text-base rounded-full py-6'
             )}
           >
             <div className="flex items-center">
@@ -83,7 +89,7 @@ const NavItems = ({ onOpenChange }: Props) => {
               Tecnicaturas
             </div>
           </AccordionTrigger>
-          <AccordionContent>
+          <AccordionContent className="ml-2">
             {AccordionItems.map((item) => (
               <LinkWithIcon
                 key={item.href}

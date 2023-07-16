@@ -4,6 +4,6 @@
 
 @layer base {
   body {
-    @apply bg-slate-100 dark:bg-neutral-900;
+    @apply bg-material-light-background dark:bg-material-dark-background;
   }
 }

@@ -23,8 +23,8 @@ const LinkWithIcon = ({ item, onOpenChange }: Props) => {
       className={cn(
         buttonVariants({ variant: 'ghost' }),
         pathname === item.href
-          ? 'bg-sky-200 dark:bg-sky-800 hover:bg-muted dark:hover:bg-muted'
-          : 'hover:bg-slate-300 dark:hover:bg-neutral-700',
+          ? 'bg-material-light-secondary text-material-light-on-secondary dark:bg-material-dark-secondary dark:text-material-dark-on-secondary hover:bg-muted  hover:text-muted dark:hover:bg-muted dark:hover:text-muted'
+          : 'hover:bg-material-light-surface-hover dark:hover:bg-material-dark-surface-hover',
         'justify-start text-base w-full rounded-full py-6'
       )}
       onClick={() => onOpenChange?.(false)}
