@@ -18,9 +18,12 @@ import {
   Users,
   BookCopy,
   Calendar,
+  ShieldAlert,
+  UserCog,
 } from 'lucide-react';
 
 export const Icons = {
+  admin: ShieldAlert,
   award: Award,
   books: BookCopy,
   computer: Laptop2,
@@ -38,6 +41,7 @@ export const Icons = {
   terminal: TerminalSquare,
   sun: SunMedium,
   user: User,
+  userSettings: UserCog,
   users: Users,
   gitHub: (props: LucideProps) => (
     <svg viewBox="0 0 438.549 438.549" {...props}>

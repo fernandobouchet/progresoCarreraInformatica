@@ -14,6 +14,7 @@ import { Dialog, DialogTrigger } from '@/components/ui/dialog';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { LoginModal } from './LoginModal';
 import { Icons } from './icons';
+import RoleModePageToggle from './ui/RoleModePageToggle';
 
 export function AvatarMenu() {
   const { status, data: session } = useSession();
@@ -61,9 +62,6 @@ export function AvatarMenu() {
                 <p className="text-xs leading-none text-muted-foreground">
                   {session?.user?.email}
                 </p>
-                <p className="text-xs leading-none text-muted-foreground">
-                  {session?.user?.role}
-                </p>
               </div>
             </DropdownMenuLabel>
             <DropdownMenuGroup>
@@ -76,6 +74,7 @@ export function AvatarMenu() {
                 <span>Ajustes</span>
               </DropdownMenuItem>
             </DropdownMenuGroup>
+            {session?.user?.role === 'ADMIN' && <RoleModePageToggle />}
             <DropdownMenuItem
               onClick={() => signOut()}
               className="hover:bg-material-light-surface-hover dark:hover:bg-material-dark-surface-hover rounded-2xl cursor-pointer active:bg-material-light-secondary dark:active:bg-material-dark-secondary focus:bg-material-light-surface-hover dark:focus:bg-material-dark-surface-hover"
