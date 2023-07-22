@@ -15,10 +15,14 @@ import {
   User,
   Settings,
   LogOut,
+  Users,
+  BookCopy,
+  Calendar,
 } from 'lucide-react';
 
 export const Icons = {
   award: Award,
+  books: BookCopy,
   computer: Laptop2,
   cpu: Cpu,
   gamepad: Gamepad,
@@ -27,12 +31,14 @@ export const Icons = {
   home: Home,
   menu: Menu,
   moon: Moon,
+  periods: Calendar,
   settings: Settings,
   server: Server,
   star: Star,
   terminal: TerminalSquare,
   sun: SunMedium,
   user: User,
+  users: Users,
   gitHub: (props: LucideProps) => (
     <svg viewBox="0 0 438.549 438.549" {...props}>
       <path
