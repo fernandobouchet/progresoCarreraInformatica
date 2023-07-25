@@ -6,8 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 enum Role {
@@ -16,12 +17,12 @@ enum Role {
 }
 
 model User {
-  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  id             String    @id @default(cuid())
   name           String?
   email          String?   @unique
   emailVerified  DateTime?
   image          String?
-  role           Role    @default(USER)
+  role           Role      @default(USER)
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
   accounts       Account[]
@@ -29,60 +30,67 @@ model User {
 }
 
 model Account {
-  id                 String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId             String  @db.ObjectId
+  id                 String   @id @default(cuid())
+  userId             String
   type               String
   provider           String
   providerAccountId  String
-  refresh_token      String?  @db.String
-  access_token       String?  @db.String
+  refresh_token      String?  @db.Text
+  access_token       String?  @db.Text
   expires_at         Int?
   token_type         String?
   scope              String?
-  id_token           String?  @db.String
+  id_token           String?  @db.Text
   session_state      String?
 
-  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+  @@index([userId])
 }
 
 model Session {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  id           String   @id @default(cuid())
   sessionToken String   @unique
-  userId       String   @db.ObjectId
+  userId       String
   expires      DateTime
 
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model Career {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  id      Int     @id @default(autoincrement())
   name    String
   periods Period[]
+
+  @@unique([id, name])
 }
 
 model Period {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  id         Int     @id @default(autoincrement())
   order      String
-  careerID   String   @db.ObjectId
-  coursesIDs String[] @db.ObjectId
+  careerID   Int
+  courses    Course[]
 
-  career     Career   @relation(fields: [careerID], references: [id], onDelete: Cascade)
-  courses    Course[] @relation(fields: [coursesIDs], references: [id])
+  career     Career  @relation(fields: [careerID], references: [id], onDelete: Cascade)
+
+  @@unique([id])
+  @@index([careerID])
 }
 
 model Course {
-  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  id              Int      @id @default(autoincrement())
   name            String
-  number          Int      @unique
   area            String?
   hsWeekly        Int?
   hsTotal         Int?
   hasCorrelatives Boolean  @default(false)
   hasOptatives    Boolean  @default(false)
   hasEquivalents  Boolean  @default(false)
-  periodsIDs      String[] @db.ObjectId
 
-  period          Period[] @relation(fields: [periodsIDs], references: [id])  
+  periods          Period[]
+  
+  @@unique([id,name])
 }
