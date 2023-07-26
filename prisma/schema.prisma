@@ -65,18 +65,18 @@ model Career {
   name    String
   periods Period[]
 
-  @@unique([id, name])
+  @@unique([name])
 }
 
 model Period {
   id         Int     @id @default(autoincrement())
-  order      String
+  order      Int
   careerID   Int
   courses    Course[]
 
   career     Career  @relation(fields: [careerID], references: [id], onDelete: Cascade)
 
-  @@unique([id])
+  @@unique([order, careerID])
   @@index([careerID])
 }
 
@@ -92,5 +92,5 @@ model Course {
 
   periods          Period[]
   
-  @@unique([id,name])
+  @@unique([name])
 }
