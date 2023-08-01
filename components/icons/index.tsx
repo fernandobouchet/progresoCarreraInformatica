@@ -20,6 +20,8 @@ import {
   Calendar,
   ShieldAlert,
   UserCog,
+  ClipboardCopy,
+  FileEdit,
 } from 'lucide-react';
 
 export const Icons = {
@@ -27,7 +29,9 @@ export const Icons = {
   award: Award,
   books: BookCopy,
   computer: Laptop2,
+  copy: ClipboardCopy,
   cpu: Cpu,
+  fileEdit: FileEdit,
   gamepad: Gamepad,
   graduation: GraduationCap,
   logout: LogOut,
