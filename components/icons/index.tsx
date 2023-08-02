@@ -65,4 +65,22 @@ export const Icons = {
       />
     </svg>
   ),
+  line: (props: LucideProps) => (
+    <svg
+      aria-hidden="true"
+      fill="none"
+      width={152}
+      height={9}
+      className="text-material-light-secondary dark:text-material-dark-on-secondary"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M1.5 4.5c5.067-4.667 10.133-4.667 15.2 0s10.133 4.667 15.2 0 10.133-4.667 15.2 0 10.133 4.667 15.2 0 10.133-4.667 15.2 0 10.133 4.667 15.2 0 10.133-4.667 15.2 0 10.133 4.667 15.2 0 10.133-4.667 15.2 0 10.133 4.667 15.2 0"
+        stroke="currentColor"
+        strokeWidth={1.5}
+        stroke-linecap="round"
+      ></path>
+    </svg>
+  ),
 };
