@@ -22,6 +22,7 @@ import {
   UserCog,
   ClipboardCopy,
   FileEdit,
+  MoreHorizontal,
 } from 'lucide-react';
 
 export const Icons = {
@@ -38,6 +39,7 @@ export const Icons = {
   home: Home,
   menu: Menu,
   moon: Moon,
+  more: MoreHorizontal,
   periods: Calendar,
   settings: Settings,
   server: Server,

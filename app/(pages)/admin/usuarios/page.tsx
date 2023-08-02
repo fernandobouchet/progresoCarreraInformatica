@@ -6,7 +6,7 @@ const AdminUsuariosPage = async () => {
   const users = await prisma.user.findMany();
 
   return (
-    <div>
+    <div className="cardsPageContainer">
       Usuarios
       <DataTable columns={UserColumn} data={users} />
     </div>

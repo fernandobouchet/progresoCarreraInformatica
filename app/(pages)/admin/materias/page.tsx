@@ -6,7 +6,7 @@ const AdminMateriasPage = async () => {
   const courses = await prisma.course.findMany();
 
   return (
-    <div>
+    <div className="cardsPageContainer">
       Materias
       <DataTable columns={CourseColumn} data={courses} />
     </div>

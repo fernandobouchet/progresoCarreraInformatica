@@ -1,4 +1,4 @@
 const PageVideojuegos = () => {
-  return <div>PageVideojuegos</div>;
+  return <div className="cardsPageContainer">PageVideojuegos</div>;
 };
 export default PageVideojuegos;

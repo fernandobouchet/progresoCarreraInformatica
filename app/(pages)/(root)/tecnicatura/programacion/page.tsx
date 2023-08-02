@@ -1,4 +1,4 @@
 const PageProgramacion = () => {
-  return <div>PageProgramacion</div>;
+  return <div className="cardsPageContainer">PageProgramacion</div>;
 };
 export default PageProgramacion;

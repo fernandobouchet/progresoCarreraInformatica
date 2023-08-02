@@ -1,4 +1,4 @@
 const PageRedesYOperaciones = () => {
-  return <div>PageRedesYOperaciones</div>;
+  return <div className="cardsPageContainer">PageRedesYOperaciones</div>;
 };
 export default PageRedesYOperaciones;

@@ -35,12 +35,15 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="flex flex-col">
-      <div className="rounded-md">
-        <Table className="border-color-red-400">
+    <div className="cardContainer">
+      <div className="rounded">
+        <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
+              <TableRow
+                key={headerGroup.id}
+                className="hover:bg-inherit dark:hover:bg-inherit border-b-material-light-surface dark:border-b-material-dark-surface"
+              >
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id}>
@@ -62,6 +65,7 @@ export function DataTable<TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && 'selected'}
+                  className="hover:bg-material-light-surface-hover dark:hover:bg-material-dark-surface-hover border-b-material-light-surface dark:border-b-material-dark-surface"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id} className="p-1">
@@ -77,7 +81,7 @@ export function DataTable<TData, TValue>({
               <TableRow>
                 <TableCell
                   colSpan={columns.length}
-                  className="h-12 text-center"
+                  className="h-16 text-center"
                 >
                   Sin resultados.
                 </TableCell>
