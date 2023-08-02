@@ -19,7 +19,6 @@ export const PeriodColumn: ColumnDef<Period>[] = [
   },
 
   {
-    header: 'Acciones',
     id: 'actions',
     cell: ({ row }) => {
       const item = row.original;

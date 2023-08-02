@@ -1,4 +1,4 @@
 const AdminPage = () => {
-  return <div>AdminPage</div>;
+  return <div className="cardsPageContainer">AdminPage</div>;
 };
 export default AdminPage;

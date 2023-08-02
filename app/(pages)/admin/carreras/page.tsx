@@ -6,7 +6,7 @@ const AdminCarrerasPage = async () => {
   const careers = await prisma.career.findMany();
 
   return (
-    <div>
+    <div className="cardsPageContainer">
       Carreras
       <DataTable columns={CareerColumn} data={careers} />
     </div>

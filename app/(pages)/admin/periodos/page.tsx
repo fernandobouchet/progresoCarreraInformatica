@@ -6,7 +6,7 @@ const AdminPeriodosPage = async () => {
   const periods = await prisma.period.findMany();
 
   return (
-    <div>
+    <div className="cardsPageContainer">
       Periodos
       <DataTable columns={PeriodColumn} data={periods} />
     </div>

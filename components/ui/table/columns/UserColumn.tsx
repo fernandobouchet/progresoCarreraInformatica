@@ -6,19 +6,23 @@ import ColumnOptions from '@/components/ui/table/ColumnOptions';
 
 export const UserColumn: ColumnDef<User>[] = [
   {
-    accessorKey: 'name',
-    header: 'Usuario',
+    accessorKey: 'id',
+    header: 'Id',
+    cell: ({ row }) => {
+      const item = row.original;
+      const abreviatedId = `${item.id.slice(0, 4)}..`;
+      return abreviatedId;
+    },
   },
   {
-    accessorKey: 'email',
-    header: 'Email',
+    accessorKey: 'name',
+    header: 'Usuario',
   },
   {
     accessorKey: 'role',
     header: 'Rol',
   },
   {
-    header: 'Acciones',
     id: 'actions',
     cell: ({ row }) => {
       const item = row.original;

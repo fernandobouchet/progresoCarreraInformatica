@@ -1,4 +1,4 @@
 const PageLicenciatura = () => {
-  return <div>PageLicenciatura</div>;
+  return <div className="cardsPageContainer">PageLicenciatura</div>;
 };
 export default PageLicenciatura;

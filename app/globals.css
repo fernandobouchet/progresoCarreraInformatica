@@ -7,3 +7,12 @@
     @apply bg-material-light-background dark:bg-material-dark-background;
   }
 }
+
+@layer components {
+  .cardContainer {
+    @apply rounded-2xl w-[calc(100%-1rem)] h-full lg:h-[calc(100%-1rem)] p-4 bg-material-light-surface dark:bg-material-dark-surface;
+  }
+  .cardsPageContainer {
+    @apply w-full flex flex-col items-center lg:px-1;
+  }
+}

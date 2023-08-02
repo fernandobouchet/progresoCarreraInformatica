@@ -1,5 +1,5 @@
 const AdminCreditosPage = () => {
-  return <div>AdminCreditosPage</div>;
+  return <div className="cardsPageContainer">AdminCreditosPage</div>;
 };
 
 export default AdminCreditosPage;

@@ -6,11 +6,14 @@ import ColumnOptions from '@/components/ui/table/ColumnOptions';
 
 export const CareerColumn: ColumnDef<Career>[] = [
   {
+    accessorKey: 'id',
+    header: 'Id',
+  },
+  {
     accessorKey: 'name',
     header: 'Carrera',
   },
   {
-    header: 'Acciones',
     id: 'actions',
     cell: ({ row }) => {
       const item = row.original;

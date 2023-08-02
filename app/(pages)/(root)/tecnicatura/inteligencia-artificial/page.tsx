@@ -1,4 +1,4 @@
 const PageInteligenciaArtificial = () => {
-  return <div>PageInteligenciaArtificial</div>;
+  return <div className="cardsPageContainer">PageInteligenciaArtificial</div>;
 };
 export default PageInteligenciaArtificial;

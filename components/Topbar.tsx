@@ -8,7 +8,7 @@ const marcellus = Marcellus({ subsets: ['latin'], weight: '400' });
 
 const Topbar = () => {
   return (
-    <nav className="flex justify-between items-center py-2 px-3 h-12 m-2 lg:m-0 lg:h-16 rounded-full lg:rounded-none bg-material-light-surface dark:bg-material-dark-surface">
+    <nav className="flex justify-between items-center py-2 px-3 h-12 m-2 lg:m-0 lg:h-16 rounded-full lg:rounded-none">
       <MobileMenu />
       <div className="hidden lg:flex lg:justify-center lg:items-center lg:mx-0 lg:w-56">
         <Image src={logo} alt="logo" className="w-8 lg:w-12 h-auto" />
