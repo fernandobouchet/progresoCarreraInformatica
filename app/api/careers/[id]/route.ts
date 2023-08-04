@@ -11,6 +11,20 @@ export async function GET(
     where: {
       id,
     },
+    include: {
+      periods: {
+        select: {
+          id: true,
+          order: true,
+          courses: {
+            select: {
+              id: true,
+              name: true,
+            },
+          },
+        },
+      },
+    },
   });
 
   if (!career) {
