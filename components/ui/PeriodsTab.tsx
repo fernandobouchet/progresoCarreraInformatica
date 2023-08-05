@@ -1,5 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { formatPeriodOrder } from '@/lib/functions';
+import CourseCard from '../CourseCard';
 
 interface Props {
   periods: {
@@ -29,13 +30,15 @@ const PeriodsTab = ({ periods }: Props) => {
           </TabsTrigger>
         ))}
       </TabsList>
-      {periods?.map((period) =>
-        period.courses.map((course) => (
-          <TabsContent key={course.id} value={period.id.toString()}>
-            <p>{course.name}</p>
-          </TabsContent>
-        ))
-      )}
+      {periods?.map((period) => (
+        <TabsContent key={period.id} value={period.id.toString()}>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">
+            {period.courses.map((course) => (
+              <CourseCard key={course.id} course={course} />
+            ))}
+          </div>
+        </TabsContent>
+      ))}
     </Tabs>
   );
 };
