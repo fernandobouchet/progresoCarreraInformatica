@@ -15,14 +15,11 @@ interface Props {
 
 const PeriodsTab = ({ periods }: Props) => {
   return (
-    <Tabs
-      defaultValue={periods ? periods[0].id.toString() : '1'}
-      className="w-full"
-    >
+    <Tabs defaultValue={'1'} className="w-full">
       <TabsList className="flex w-full p-0 h-14 border-none bg-slate-200 dark:bg-neutral-800 rounded-full shadow-sm">
         {periods?.map((period) => (
           <TabsTrigger
-            value={period.id.toString()}
+            value={period.order.toString()}
             className="rounded-full h-full text-base w-full data-[state=active]:bg-sky-200 dark:data-[state=active]:bg-sky-800"
             key={period.id}
           >
@@ -31,7 +28,7 @@ const PeriodsTab = ({ periods }: Props) => {
         ))}
       </TabsList>
       {periods?.map((period) => (
-        <TabsContent key={period.id} value={period.id.toString()}>
+        <TabsContent key={period.id} value={period.order.toString()}>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">
             {period.courses.map((course) => (
               <CourseCard key={course.id} course={course} />
