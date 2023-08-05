@@ -11,7 +11,7 @@ const Navigation = ({ children }: Props) => {
       <Topbar />
       <div className="flex">
         <Sidebar />
-        <div className="flex-grow h-[calc(100dvh-4rem)]">{children}</div>
+        <div className="w-full h-[calc(100dvh-4rem)]">{children}</div>
       </div>
     </>
   );
