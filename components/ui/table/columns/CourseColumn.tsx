@@ -11,7 +11,7 @@ export const CourseColumn: ColumnDef<Course>[] = [
   },
   {
     accessorKey: 'name',
-    header: 'Carrera',
+    header: 'Asignatura',
   },
   {
     id: 'actions',

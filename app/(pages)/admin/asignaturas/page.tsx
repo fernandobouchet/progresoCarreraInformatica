@@ -3,12 +3,12 @@ import { DataTable } from '@/components/ui/table/DataTable';
 import { CourseColumn } from '@/components/ui/table/columns/CourseColumn';
 import prisma from '@/lib/prisma';
 
-const AdminMateriasPage = async () => {
+const AdminAsignaturasPage = async () => {
   const courses = await prisma.course.findMany();
 
   return (
     <main className="cardsPageContainer">
-      <h1 className="text-2xl lg:text-3xl">Materias</h1>
+      <h1 className="title">Asignaturas</h1>
       <div className="py-4 lg:py-8">
         <Icons.line />
       </div>
@@ -17,4 +17,4 @@ const AdminMateriasPage = async () => {
   );
 };
 
-export default AdminMateriasPage;
+export default AdminAsignaturasPage;

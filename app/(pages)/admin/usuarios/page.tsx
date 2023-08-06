@@ -8,7 +8,7 @@ const AdminUsuariosPage = async () => {
 
   return (
     <main className="cardsPageContainer">
-      <h1 className="text-2xl lg:text-3xl">Usuarios</h1>
+      <h1 className="title">Usuarios</h1>
       <div className="py-4 lg:py-8">
         <Icons.line />
       </div>

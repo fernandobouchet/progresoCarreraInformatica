@@ -50,7 +50,7 @@ export function AvatarMenu() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="w-56 bg-material-light-surface dark:bg-material-dark-surface text-material-light-on-surface dark:text-material-dark-on-surface border-none rounded-2xl"
+            className="w-56 bg-material-light-surface-2 dark:bg-material-dark-surface-2 text-material-light-on-surface dark:text-material-dark-on-surface border-none rounded-2xl"
             align="end"
             forceMount
           >

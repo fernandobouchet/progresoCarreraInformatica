@@ -36,7 +36,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="cardContainer">
-      <div className="rounded">
+      <div className="rounded w-full">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -90,7 +90,7 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      {table.getCanPreviousPage() && table.getCanNextPage() && (
+      {(table.getCanPreviousPage() || table.getCanNextPage()) && (
         <div className="flex items-center justify-center space-x-2 py-4">
           <Button
             variant="ghost"

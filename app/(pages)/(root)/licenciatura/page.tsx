@@ -7,12 +7,16 @@ const PageLicenciatura = async () => {
 
   return (
     <main className="cardsPageContainer">
-      <h1 className="text-2xl lg:text-3xl">Licenciatura en informática</h1>
+      <h1 className="title">Licenciatura en informática</h1>
       <div className="py-4 lg:py-8">
         <Icons.line />
       </div>
-      <h2>Año</h2>
-      <PeriodsTab periods={data?.career?.periods} />
+      {data?.career?.periods?.length >= 1 && (
+        <>
+          <h2 className="subtitle">Año</h2>
+          <PeriodsTab periods={data?.career?.periods} />
+        </>
+      )}
     </main>
   );
 };
