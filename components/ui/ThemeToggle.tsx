@@ -22,12 +22,12 @@ export function ThemeToggle() {
       variant="ghost"
       size="icon"
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="rounded-full hover:bg-material-light-surface-hover dark:hover:bg-material-dark-surface-hover text-material-light-on-surface dark:text-material-dark-on-surface hover:text-muted group"
+      className="rounded-full hover:text-foreground hover:bg-muted transition duration-150 group"
     >
       {theme === 'dark' ? (
-        <Icons.sun className="h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 group-hover:fill-material-dark-on-surface" />
+        <Icons.sun className="h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 group-hover:fill-foreground" />
       ) : (
-        <Icons.moon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 group-hover:fill-material-light-on-surface" />
+        <Icons.moon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 group-hover:fill-foreground" />
       )}
     </Button>
   );

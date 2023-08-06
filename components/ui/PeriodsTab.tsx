@@ -16,11 +16,11 @@ interface Props {
 const PeriodsTab = ({ periods }: Props) => {
   return (
     <Tabs defaultValue={'1'} className="w-full">
-      <TabsList className="flex w-full p-0 h-14 border-none bg-slate-200 dark:bg-neutral-800 rounded-full shadow-sm">
+      <TabsList className="flex w-full p-0 h-14 border-none rounded-full shadow-sm bg-card">
         {periods?.map((period) => (
           <TabsTrigger
             value={period.order.toString()}
-            className="rounded-full h-full text-base w-full data-[state=active]:bg-sky-200 dark:data-[state=active]:bg-sky-800"
+            className="rounded-full h-full text-base w-full data-[state=active]:bg-accent data-[state=active]:text-accent-foreground data-[state=active]:hover:bg-accent/90 hover:bg-muted hover:text-foreground"
             key={period.id}
           >
             {formatPeriodOrder(period.order)}

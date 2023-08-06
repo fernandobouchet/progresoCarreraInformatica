@@ -1,3 +1,4 @@
+import { Card, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogTrigger } from '@/components/ui/dialog';
 import CourseCardForm from './ui/CourseCardForm';
 
@@ -12,9 +13,14 @@ const CourseCard = ({ course }: Props) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div className="h-28 w-full bg-material-light-surface dark:bg-material-dark-surface text-material-light-on-surface dark:text-material-dark-on-surface hover:bg-sky-200 dark:hover:bg-sky-800 transition duration-300 p-3 rounded-2xl cursor-pointer">
-          {course.name}
-        </div>
+        <Card className="flex flex-col justify-between h-28 w-full hover:bg-accent transition duration-200 p-3 rounded-2xl border-none cursor-pointer">
+          <CardHeader className="p-0">
+            <CardTitle className="text-sm font-medium">{course.name}</CardTitle>
+          </CardHeader>
+          <CardFooter className="p-0 justify-end text-sm">
+            <span>Estado</span>
+          </CardFooter>
+        </Card>
       </DialogTrigger>
       <CourseCardForm course={course} />
     </Dialog>
