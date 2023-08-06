@@ -15,7 +15,7 @@ interface Props {
 }
 const CourseCardForm = ({ course }: Props) => {
   return (
-    <DialogContent className="max-w-[22rem] sm:max-w-[425px] border-none rounded-2xl">
+    <DialogContent className="max-w-[calc(100dvw-1rem)] sm:max-w-[40rem] border-none rounded-2xl">
       <DialogHeader>
         <DialogTitle>{course?.name}</DialogTitle>
         <DialogDescription>

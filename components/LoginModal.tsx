@@ -11,7 +11,7 @@ import { signIn } from 'next-auth/react';
 
 const LoginModal = () => {
   return (
-    <DialogContent className="sm:max-w-[425px] border-none">
+    <DialogContent className="max-w-[calc(100dvw-1rem)] sm:max-w-[40rem] border-none">
       <DialogHeader>
         <DialogTitle>Inicio de sesión</DialogTitle>
         <DialogDescription>
@@ -20,22 +20,13 @@ const LoginModal = () => {
           consideres para ayudar o aconsejar a otros estudiantes.
         </DialogDescription>
       </DialogHeader>
-      <DialogFooter className="!justify-evenly">
+      <DialogFooter className="flex !justify-center">
         <Button
-          variant="outline"
-          onClick={() => signIn('github')}
-          className="rounded-full border-none transition"
-        >
-          <Icons.gitHub className="mr-2 h-4 w-4" />
-          Github
-        </Button>
-        <Button
-          variant="outline"
           onClick={() => signIn('google')}
-          className="rounded-full border-none transition"
+          className="rounded-full border-none w-64"
         >
-          <Icons.google className="mr-2 h-4 w-4" />
-          Google
+          <Icons.google className="icon-button" />
+          Acceder con Google
         </Button>
       </DialogFooter>
     </DialogContent>
