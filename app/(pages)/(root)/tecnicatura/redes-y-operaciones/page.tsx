@@ -1,5 +1,5 @@
 import { Icons } from '@/components/icons';
-import { PeriodsTab } from '@/components/ui/PeriodsTab';
+import { PeriodsTab } from '@/components/PeriodsTab';
 import { getCareer } from '@/lib/services/careers';
 
 const PageRedesYOperaciones = async () => {

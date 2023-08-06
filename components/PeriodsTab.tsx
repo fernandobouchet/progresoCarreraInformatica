@@ -1,6 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { formatPeriodOrder } from '@/lib/functions';
-import CourseCard from '../CourseCard';
+import CourseCard from '@/components/CourseCard';
 
 interface Props {
   periods: {

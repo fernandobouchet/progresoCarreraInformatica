@@ -1,6 +1,6 @@
 import { Icons } from '@/components/icons';
-import { PeriodColumn } from '@/components/ui/table/columns/PeriodColumn';
-import { DataTable } from '@/components/ui/table/DataTable';
+import { PeriodColumn } from '@/components/table/columns/PeriodColumn';
+import { DataTable } from '@/components/table/DataTable';
 import prisma from '@/lib/prisma';
 
 const AdminPeriodosPage = async () => {

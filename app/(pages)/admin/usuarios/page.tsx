@@ -1,6 +1,6 @@
 import { Icons } from '@/components/icons';
-import { UserColumn } from '@/components/ui/table/columns/UserColumn';
-import { DataTable } from '@/components/ui/table/DataTable';
+import { UserColumn } from '@/components/table/columns/UserColumn';
+import { DataTable } from '@/components/table/DataTable';
 import prisma from '@/lib/prisma';
 
 const AdminUsuariosPage = async () => {

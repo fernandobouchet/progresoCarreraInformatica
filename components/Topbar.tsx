@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import { AvatarMenu } from './AvatarMenu';
-import { MobileMenu } from './MobileMenu';
-import logo from '@/public/logo-unahur.webp';
 import { Marcellus } from 'next/font/google';
+import { AvatarMenu } from '@/components/AvatarMenu';
+import { MobileMenu } from '@/components/MobileMenu';
+import logo from '@/public/logo-unahur.webp';
 
 const marcellus = Marcellus({ subsets: ['latin'], weight: '400' });
 
