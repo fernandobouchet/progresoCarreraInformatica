@@ -64,8 +64,8 @@ const AdminItems = [
     icon: <Icons.graduation className="h-4 w-4 mr-2" />,
   },
   {
-    title: 'Materias',
-    href: '/admin/materias',
+    title: 'Asignaturas',
+    href: '/admin/asignaturas',
     icon: <Icons.books className="h-4 w-4 mr-2" />,
   },
   {
