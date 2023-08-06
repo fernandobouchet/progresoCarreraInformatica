@@ -71,7 +71,7 @@ export const Icons = {
       fill="none"
       width={152}
       height={9}
-      className="text-material-light-secondary dark:text-material-dark-on-secondary"
+      className="text-primary"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >

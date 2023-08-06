@@ -10,14 +10,14 @@ const RoleModePageToggle = () => {
     <>
       {pathname.startsWith('/admin') ? (
         <Link href={'/'}>
-          <DropdownMenuItem className="hover:bg-material-light-surface-hover dark:hover:bg-material-dark-surface-hover rounded-2xl cursor-pointer active:bg-material-light-secondary dark:active:bg-material-dark-secondary focus:bg-material-light-surface-hover dark:focus:bg-material-dark-surface-hover">
+          <DropdownMenuItem className="rounded-2xl cursor-pointer">
             <Icons.userSettings className="mr-2 h-4 w-4" />
             <span>Modo usuario</span>
           </DropdownMenuItem>
         </Link>
       ) : (
         <Link href={'/admin'}>
-          <DropdownMenuItem className="hover:bg-material-light-surface-hover dark:hover:bg-material-dark-surface-hover rounded-2xl cursor-pointer active:bg-material-light-secondary dark:active:bg-material-dark-secondary focus:bg-material-light-surface-hover dark:focus:bg-material-dark-surface-hover">
+          <DropdownMenuItem className="rounded-2xl cursor-pointer">
             <Icons.admin className="mr-2 h-4 w-4" />
             <span>Modo administrador</span>
           </DropdownMenuItem>

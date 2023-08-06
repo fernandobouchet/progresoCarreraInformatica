@@ -26,12 +26,12 @@ const ColumnOptions = (item: Props) => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
-          className="w-32 bg-material-light-surface dark:bg-material-dark-surface text-material-light-on-surface dark:text-material-dark-on-surface border-none rounded-2xl"
+          className="w-32 border-none rounded-2xl"
           align="end"
         >
           <DropdownMenuLabel>Acciones</DropdownMenuLabel>
           <DropdownMenuItem
-            className="hover:bg-material-light-surface-hover dark:hover:bg-material-dark-surface-hover rounded-2xl cursor-pointer active:bg-material-light-secondary dark:active:bg-material-dark-secondary focus:bg-material-light-surface-hover dark:focus:bg-material-dark-surface-hover"
+            className="rounded-2xl cursor-pointer"
             onClick={() =>
               navigator.clipboard.writeText(itemData.id.toString())
             }
@@ -40,7 +40,7 @@ const ColumnOptions = (item: Props) => {
             Copiar ID
           </DropdownMenuItem>
           <DropdownMenuItem
-            className="hover:bg-material-light-surface-hover dark:hover:bg-material-dark-surface-hover rounded-2xl cursor-pointer active:bg-material-light-secondary dark:active:bg-material-dark-secondary focus:bg-material-light-surface-hover dark:focus:bg-material-dark-surface-hover"
+            className="rounded-2xl cursor-pointer"
             onClick={() => console.log(itemData)}
           >
             <Icons.fileEdit className="h-4 w-4 mr-2" />

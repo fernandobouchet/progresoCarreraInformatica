@@ -18,7 +18,7 @@ export function MobileMenu() {
         </SheetTrigger>
         <SheetContent
           side={'left'}
-          className="h-screen flex flex-col gap-0 border-none pt-20 bg-material-light-surface dark:bg-material-dark-surface rounded-r-lg"
+          className="h-screen flex flex-col gap-0 border-none pt-20 rounded-r-lg"
         >
           <NavItems onOpenChange={setOpen} />
         </SheetContent>

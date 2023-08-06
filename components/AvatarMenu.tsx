@@ -24,11 +24,7 @@ export function AvatarMenu() {
       {status !== 'authenticated' ? (
         <Dialog>
           <DialogTrigger asChild>
-            <Button
-              variant="outline"
-              className="rounded-full border-none bg-material-light-primary text-material-light-on-primary dark:bg-material-dark-primary dark:text-material-dark-on-primary transition hover:bg-material-light-primary
-              hover:text-material-light-on-primary dark:hover:bg-material-dark-primary  dark:hover:text-material-dark-on-primary hover:brightness-105"
-            >
+            <Button className="rounded-full border-none transition">
               Acceder
             </Button>
           </DialogTrigger>
@@ -50,7 +46,7 @@ export function AvatarMenu() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="w-56 bg-material-light-surface-2 dark:bg-material-dark-surface-2 text-material-light-on-surface dark:text-material-dark-on-surface border-none rounded-2xl"
+            className="w-56 border-none rounded-2xl"
             align="end"
             forceMount
           >
@@ -65,21 +61,21 @@ export function AvatarMenu() {
               </div>
             </DropdownMenuLabel>
             <DropdownMenuGroup>
-              <DropdownMenuItem className="hover:bg-material-light-surface-hover dark:hover:bg-material-dark-surface-hover rounded-2xl cursor-pointer active:bg-material-light-secondary dark:active:bg-material-dark-secondary focus:bg-material-light-surface-hover dark:focus:bg-material-dark-surface-hover">
-                <Icons.user className="mr-2 h-4 w-4" />
+              <DropdownMenuItem className="rounded-2xl cursor-pointer">
+                <Icons.user className="icon-button" />
                 <span>Perfil</span>
               </DropdownMenuItem>
-              <DropdownMenuItem className="hover:bg-material-light-surface-hover dark:hover:bg-material-dark-surface-hover rounded-2xl cursor-pointer active:bg-material-light-secondary dark:active:bg-material-dark-secondary focus:bg-material-light-surface-hover dark:focus:bg-material-dark-surface-hover">
-                <Icons.settings className="mr-2 h-4 w-4" />
+              <DropdownMenuItem className="rounded-2xl cursor-pointer">
+                <Icons.settings className="icon-button" />
                 <span>Ajustes</span>
               </DropdownMenuItem>
             </DropdownMenuGroup>
             {session?.user?.role === 'ADMIN' && <RoleModePageToggle />}
             <DropdownMenuItem
               onClick={() => signOut()}
-              className="hover:bg-material-light-surface-hover dark:hover:bg-material-dark-surface-hover rounded-2xl cursor-pointer active:bg-material-light-secondary dark:active:bg-material-dark-secondary focus:bg-material-light-surface-hover dark:focus:bg-material-dark-surface-hover"
+              className="rounded-2xl cursor-pointer"
             >
-              <Icons.logout className="mr-2 h-4 w-4" />
+              <Icons.logout className="icon-button" />
               <span>Cerrar sesión</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
