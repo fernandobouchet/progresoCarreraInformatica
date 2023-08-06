@@ -15,9 +15,13 @@ import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { LoginModal } from '@/components/LoginModal';
 import { Icons } from '@/components/icons';
 import RoleModePageToggle from '@/components/RoleModePageToggle';
+import { Skeleton } from './ui/skeleton';
 
 export function AvatarMenu() {
   const { status, data: session } = useSession();
+
+  if (status === 'loading')
+    return <Skeleton className="h-8 w-8 rounded-full" />;
 
   return (
     <>
