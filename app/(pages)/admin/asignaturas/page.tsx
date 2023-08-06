@@ -1,6 +1,6 @@
 import { Icons } from '@/components/icons';
-import { DataTable } from '@/components/ui/table/DataTable';
-import { CourseColumn } from '@/components/ui/table/columns/CourseColumn';
+import { DataTable } from '@/components/table/DataTable';
+import { CourseColumn } from '@/components/table/columns/CourseColumn';
 import prisma from '@/lib/prisma';
 
 const AdminAsignaturasPage = async () => {

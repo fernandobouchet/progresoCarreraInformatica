@@ -12,9 +12,9 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Dialog, DialogTrigger } from '@/components/ui/dialog';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { LoginModal } from './LoginModal';
-import { Icons } from './icons';
-import RoleModePageToggle from './ui/RoleModePageToggle';
+import { LoginModal } from '@/components/LoginModal';
+import { Icons } from '@/components/icons';
+import RoleModePageToggle from '@/components/RoleModePageToggle';
 
 export function AvatarMenu() {
   const { status, data: session } = useSession();

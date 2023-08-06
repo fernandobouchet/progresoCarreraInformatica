@@ -1,6 +1,6 @@
 import { Icons } from '@/components/icons';
-import { DataTable } from '@/components/ui/table/DataTable';
-import { CareerColumn } from '@/components/ui/table/columns/CareerColumn';
+import { DataTable } from '@/components/table/DataTable';
+import { CareerColumn } from '@/components/table/columns/CareerColumn';
 import prisma from '@/lib/prisma';
 
 const AdminCarrerasPage = async () => {

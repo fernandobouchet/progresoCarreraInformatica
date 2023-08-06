@@ -1,6 +1,6 @@
 'use client';
 import { Icons } from '@/components/icons';
-import { PeriodsTab } from '@/components/ui/PeriodsTab';
+import { PeriodsTab } from '@/components/PeriodsTab';
 import { trpc } from '@/lib/trcp';
 
 const PageInformatica = () => {

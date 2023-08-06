@@ -2,7 +2,7 @@
 
 import { ColumnDef } from '@tanstack/react-table';
 import { Career } from '@prisma/client';
-import ColumnOptions from '@/components/ui/table/ColumnOptions';
+import ColumnOptions from '@/components/table/ColumnOptions';
 
 export const CareerColumn: ColumnDef<Career>[] = [
   {

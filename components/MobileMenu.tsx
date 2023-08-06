@@ -1,8 +1,8 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { NavItems } from './NavItems';
-import { Icons } from './icons';
+import { NavItems } from '@/components/NavItems';
+import { Icons } from '@/components/icons';
 import { useState } from 'react';
 
 export function MobileMenu() {

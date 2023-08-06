@@ -1,7 +1,7 @@
 'use client';
-import { LinkWithIcon } from './ui/LinkWithIcon';
-import ThemeToggle from './ui/ThemeToggle';
-import { Icons } from './icons';
+import { LinkWithIcon } from '@/components/LinkWithIcon';
+import ThemeToggle from '@/components/ThemeToggle';
+import { Icons } from '@/components/icons';
 import { usePathname } from 'next/navigation';
 
 const RootItems = [

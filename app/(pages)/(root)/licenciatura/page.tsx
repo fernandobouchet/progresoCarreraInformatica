@@ -1,6 +1,6 @@
 'use client';
-import { PeriodsTab } from '@/components/ui/PeriodsTab';
 import { Icons } from '@/components/icons';
+import { PeriodsTab } from '@/components/PeriodsTab';
 import { trpc } from '@/lib/trcp';
 
 const PageLicenciatura = () => {

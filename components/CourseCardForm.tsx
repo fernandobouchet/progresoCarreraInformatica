@@ -5,7 +5,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { Button } from './button';
+import { Button } from '@/components/ui/button';
 
 interface Props {
   course: {

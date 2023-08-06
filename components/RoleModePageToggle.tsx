@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { DropdownMenuItem } from './dropdown-menu';
 import { usePathname } from 'next/navigation';
-import { Icons } from '../icons';
+import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
+import { Icons } from '@/components/icons';
 
 const RoleModePageToggle = () => {
   const pathname = usePathname();

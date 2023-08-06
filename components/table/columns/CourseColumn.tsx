@@ -2,7 +2,7 @@
 
 import { ColumnDef } from '@tanstack/react-table';
 import { Course } from '@prisma/client';
-import ColumnOptions from '@/components/ui/table/ColumnOptions';
+import ColumnOptions from '@/components/table/ColumnOptions';
 
 export const CourseColumn: ColumnDef<Course>[] = [
   {
