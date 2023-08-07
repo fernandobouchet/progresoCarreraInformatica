@@ -22,7 +22,7 @@ export function ThemeToggle() {
       variant="ghost"
       size="icon"
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="rounded-full hover:text-foreground hover:bg-muted transition duration-150 group"
+      className="rounded-full hover:text-foreground hover:bg-muted group"
     >
       {theme === 'dark' ? (
         <Icons.sun className="h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 group-hover:fill-foreground" />
