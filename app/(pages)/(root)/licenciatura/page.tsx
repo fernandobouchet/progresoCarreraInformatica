@@ -1,6 +1,6 @@
 import { Icons } from '@/components/icons';
 import { PeriodsTab } from '@/components/PeriodsTab';
-import { getCareer } from '@/lib/services/careers';
+import { getCareer } from '@/lib/services/public/careers';
 
 const PageLicenciatura = async () => {
   const { data } = await getCareer(1);

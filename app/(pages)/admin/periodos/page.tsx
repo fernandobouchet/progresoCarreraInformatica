@@ -1,10 +1,10 @@
 import { Icons } from '@/components/icons';
 import { PeriodColumn } from '@/components/table/columns/PeriodColumn';
 import { DataTable } from '@/components/table/DataTable';
-import prisma from '@/lib/prisma';
+import { getPeriods } from '@/lib/services/admin/periods';
 
 const AdminPeriodosPage = async () => {
-  const periods = await prisma.period.findMany();
+  const { periods } = await getPeriods();
 
   return (
     <main className="cardsPageContainer">

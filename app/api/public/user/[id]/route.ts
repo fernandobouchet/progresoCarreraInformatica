@@ -1,23 +1,22 @@
 import prisma from '@/lib/prisma';
 import { NextResponse } from 'next/server';
-import courseSchema from '../../validators/courseSchema';
 
 export async function GET(
   request: Request,
-  { params }: { params: { id: number } }
+  { params }: { params: { id: string } }
 ) {
-  const id = Number(params.id);
-  const course = await prisma.course.findUnique({
+  const id = params.id;
+  const user = await prisma.user.findUnique({
     where: {
       id,
     },
   });
 
-  if (!course) {
+  if (!user) {
     return NextResponse.json(
       {
         status: 'fail',
-        message: 'No course with the Provided ID Found',
+        message: 'No user with the Provided ID Found',
       },
       {
         status: 404,
@@ -30,7 +29,7 @@ export async function GET(
     {
       status: 'success',
       data: {
-        course,
+        user,
       },
     },
     {
@@ -42,24 +41,22 @@ export async function GET(
 
 export async function PATCH(
   request: Request,
-  { params }: { params: { id: number } }
+  { params }: { params: { id: string } }
 ) {
   try {
-    const id = Number(params.id);
+    const id = params.id;
     const newData = await request.json();
 
-    const validatedNewData = courseSchema.parse(newData);
-
-    const updatedCourse = await prisma.course.update({
+    const updatedUser = await prisma.user.update({
       where: { id },
-      data: validatedNewData,
+      data: newData,
     });
 
     return NextResponse.json(
       {
         status: 'success',
         data: {
-          course: updatedCourse,
+          user: updatedUser,
         },
       },
       {
@@ -72,7 +69,7 @@ export async function PATCH(
       return NextResponse.json(
         {
           status: 'fail',
-          message: 'No course with the Provided ID Found',
+          message: 'No user with the Provided ID Found',
         },
         {
           status: 404,
@@ -93,14 +90,15 @@ export async function PATCH(
     );
   }
 }
+
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: number } }
+  { params }: { params: { id: string } }
 ) {
   try {
-    const id = Number(params.id);
+    const id = params.id;
 
-    await prisma.course.delete({
+    await prisma.user.delete({
       where: { id },
     });
 
@@ -110,7 +108,7 @@ export async function DELETE(
       return NextResponse.json(
         {
           status: 'fail',
-          message: 'No course with the Provided ID Found',
+          message: 'No user with the Provided ID Found',
         },
         {
           status: 404,

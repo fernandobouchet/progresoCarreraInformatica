@@ -1,6 +1,6 @@
 import prisma from '@/lib/prisma';
 import { NextResponse } from 'next/server';
-import periodSchema from '../../validators/periodSchema';
+import periodSchema from '@/validators/periodSchema';
 
 export async function GET(
   request: Request,

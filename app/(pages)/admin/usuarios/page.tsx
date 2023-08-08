@@ -1,10 +1,10 @@
 import { Icons } from '@/components/icons';
 import { UserColumn } from '@/components/table/columns/UserColumn';
 import { DataTable } from '@/components/table/DataTable';
-import prisma from '@/lib/prisma';
+import { getUsers } from '@/lib/services/admin/users';
 
 const AdminUsuariosPage = async () => {
-  const users = await prisma.user.findMany();
+  const { users } = await getUsers();
 
   return (
     <main className="cardsPageContainer">

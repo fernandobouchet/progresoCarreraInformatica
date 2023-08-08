@@ -1,10 +1,10 @@
 import { Icons } from '@/components/icons';
 import { DataTable } from '@/components/table/DataTable';
 import { CareerColumn } from '@/components/table/columns/CareerColumn';
-import prisma from '@/lib/prisma';
+import { getCareers } from '@/lib/services/admin/careers';
 
 const AdminCarrerasPage = async () => {
-  const careers = await prisma.career.findMany();
+  const { careers } = await getCareers();
 
   return (
     <main className="cardsPageContainer">

@@ -1,6 +1,6 @@
 import prisma from '@/lib/prisma';
 import { NextResponse } from 'next/server';
-import careerSchema from '../../validators/careerSchema';
+import careerSchema from '@/validators/careerSchema';
 
 export async function GET(
   request: Request,

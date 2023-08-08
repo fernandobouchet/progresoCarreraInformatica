@@ -1,10 +1,10 @@
 import { Icons } from '@/components/icons';
 import { DataTable } from '@/components/table/DataTable';
 import { CourseColumn } from '@/components/table/columns/CourseColumn';
-import prisma from '@/lib/prisma';
+import { getCourses } from '@/lib/services/admin/courses';
 
 const AdminAsignaturasPage = async () => {
-  const courses = await prisma.course.findMany();
+  const { courses } = await getCourses();
 
   return (
     <main className="cardsPageContainer">

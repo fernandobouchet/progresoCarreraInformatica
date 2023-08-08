@@ -1,6 +1,6 @@
 import prisma from '@/lib/prisma';
 import { NextRequest, NextResponse } from 'next/server';
-import courseSchema from '../validators/courseSchema';
+import courseSchema from '@/validators/courseSchema';
 
 export async function GET(request: NextRequest) {
   const page_str = request.nextUrl.searchParams.get('page');

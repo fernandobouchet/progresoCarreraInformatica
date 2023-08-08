@@ -1,6 +1,6 @@
 import prisma from '@/lib/prisma';
 import { NextRequest, NextResponse } from 'next/server';
-import periodSchema from '../validators/periodSchema';
+import careerSchema from '@/validators/careerSchema';
 
 export async function GET(request: NextRequest) {
   const page_str = request.nextUrl.searchParams.get('page');
@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
   const limit = limit_str ? parseInt(limit_str, 10) : 10;
   const skip = (page - 1) * limit;
 
-  const periods = await prisma.period.findMany({
+  const careers = await prisma.career.findMany({
     skip,
     take: limit,
   });
@@ -18,8 +18,8 @@ export async function GET(request: NextRequest) {
   return NextResponse.json(
     {
       status: 'success',
-      results: periods.length,
-      periods,
+      results: careers.length,
+      careers,
     },
     {
       status: 201,
@@ -30,19 +30,19 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    const newData = await request.json();
 
-    const validatedData = periodSchema.parse(body);
+    const validatedNewData = careerSchema.parse(newData);
 
-    const period = await prisma.period.create({
-      data: validatedData,
+    const career = await prisma.career.create({
+      data: validatedNewData,
     });
 
     return NextResponse.json(
       {
         status: 'success',
         data: {
-          period,
+          career,
         },
       },
       {
@@ -55,7 +55,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           status: 'fail',
-          message: 'period with same name already exists',
+          message: 'Career with same name already exists',
         },
         {
           status: 409,
