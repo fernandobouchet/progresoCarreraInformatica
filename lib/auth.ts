@@ -29,5 +29,5 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
   },
-  debug: process.env.NODE_ENV === 'production',
+  debug: process.env.NODE_ENV !== 'production',
 };
