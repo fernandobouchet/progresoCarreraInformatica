@@ -1,15 +1,26 @@
-import { headers } from 'next/headers';
+import fetcher from '@/lib/swr';
+import useSWR from 'swr';
 
-const getCareers = async () => {
-  const careers = await fetch(
-    `${process.env.NEXT_PUBLIC_HOME_URL}/api/admin/careers`,
-    {
-      method: 'GET',
-      headers: headers(),
-    }
-  );
-  const data = await careers.json();
-  return data;
+type CareersResponse = {
+  data: {
+    careers: {
+      id: number;
+      name: string;
+    }[];
+    results: number;
+  };
 };
 
-export { getCareers };
+const useCareers = () => {
+  const { data, error, isLoading } = useSWR<CareersResponse, Error>(
+    `/api/admin/careers`,
+    fetcher
+  );
+  return {
+    careers: data?.data?.careers,
+    isLoading,
+    isError: error,
+  };
+};
+
+export { useCareers };

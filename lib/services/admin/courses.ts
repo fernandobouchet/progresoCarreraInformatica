@@ -1,15 +1,32 @@
-import { headers } from 'next/headers';
+import fetcher from '@/lib/swr';
+import useSWR from 'swr';
 
-const getCourses = async () => {
-  const careers = await fetch(
-    `${process.env.NEXT_PUBLIC_HOME_URL}/api/admin/courses`,
-    {
-      method: 'GET',
-      headers: headers(),
-    }
-  );
-  const data = await careers.json();
-  return data;
+type CoursesResponse = {
+  data: {
+    courses: {
+      area: string;
+      id: number;
+      name: string;
+      hasCorrelatives: boolean;
+      hasEquivalents: boolean;
+      hasOptatives: boolean;
+      hsTotal: number;
+      hsWeekly: number;
+    }[];
+    results: number;
+  };
 };
 
-export { getCourses };
+const useCourses = () => {
+  const { data, error, isLoading } = useSWR<CoursesResponse, Error>(
+    `/api/admin/courses`,
+    fetcher
+  );
+  return {
+    courses: data?.data?.courses,
+    isLoading,
+    isError: error,
+  };
+};
+
+export { useCourses };
