@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
     {
       status: 'success',
       results: periods.length,
-      periods,
+      data: { periods },
     },
     {
       status: 201,

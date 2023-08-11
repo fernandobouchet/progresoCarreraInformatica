@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
     {
       status: 'success',
       results: courses.length,
-      courses,
+      data: { courses },
     },
     {
       status: 201,

@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
     {
       status: 'success',
       results: careers.length,
-      careers,
+      data: { careers },
     },
     {
       status: 201,
