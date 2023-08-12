@@ -16,6 +16,13 @@ enum Role {
   USER
 }
 
+enum CourseStatus {
+  CURSANDO
+  PENDIENTE
+  REGULARIZADA
+  APROBADA
+}
+
 model User {
   id             String    @id @default(cuid())
   name           String?
@@ -27,6 +34,8 @@ model User {
   updatedAt      DateTime  @updatedAt
   accounts       Account[]
   sessions       Session[]
+  courses        UserCourse[]
+  careers        UserCareer[]
 }
 
 model Account {
@@ -64,6 +73,7 @@ model Career {
   id      Int      @id
   name    String
   periods Period[]
+  users   UserCareer[]
 
   @@unique([name])
 }
@@ -82,15 +92,41 @@ model Period {
 
 model Course {
   id              Int      @id
+  order           Int
   name            String
   area            String?
+  description     String?
   hsWeekly        Int?
   hsTotal         Int?
   hasCorrelatives Boolean  @default(false)
   hasOptatives    Boolean  @default(false)
   hasEquivalents  Boolean  @default(false)
 
+  courses          UserCourse[]
   periods          Period[]
-  
   @@unique([name])
+}
+
+model UserCourse {
+  id               String       @id @default(cuid())
+  courseId         Int
+  userId           String
+  qualification    Int          @default(0)
+  status           CourseStatus @default(PENDIENTE)
+
+  course           Course       @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  user             User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@unique([courseId, userId])
+  @@index([userId])
+}
+
+model UserCareer {
+  id         String       @id @default(cuid())
+  userId     String
+  careerId   Int
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  career     Career   @relation(fields: [careerId], references: [id], onDelete: Cascade)
+  @@unique([userId, careerId])
+  @@index([careerId])
 }
