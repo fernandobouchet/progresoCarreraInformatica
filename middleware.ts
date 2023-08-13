@@ -9,6 +9,9 @@ export default withAuth(
     ) {
       return new NextResponse('You are not authorized!');
     }
+    if (req.nextUrl.pathname.startsWith('user') && !req.nextauth.token?.id) {
+      return new NextResponse('You must be logged in!');
+    }
   },
   {
     callbacks: {
@@ -20,4 +23,6 @@ export default withAuth(
   }
 );
 
-export const config = { matcher: ['/admin(.*)', '/api/admin(.*)'] };
+export const config = {
+  matcher: ['/admin(.*)', '/api/admin(.*)', '/api/user(.*)'],
+};
