@@ -6,6 +6,8 @@ type CoursesResponse = {
     courses: {
       area: string;
       id: number;
+      order: number;
+      description: string;
       name: string;
       hasCorrelatives: boolean;
       hasEquivalents: boolean;

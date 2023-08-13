@@ -1,6 +1,7 @@
 export const coursesData = [
   {
     id: 1,
+    order: 1,
     name: 'Matemática I',
     area: 'CB',
     hsWeekly: 8,
@@ -8,6 +9,7 @@ export const coursesData = [
   },
   {
     id: 2,
+    order: 2,
     name: 'Introducción a la programación',
     area: 'AyL',
     hsWeekly: 8,
@@ -15,6 +17,7 @@ export const coursesData = [
   },
   {
     id: 3,
+    order: 3,
     name: 'Organización de computadoras',
     area: 'ASOyR',
     hsWeekly: 6,
@@ -22,6 +25,7 @@ export const coursesData = [
   },
   {
     id: 4,
+    order: 4,
     name: 'Nuevos entornos y lenguajes',
     area: 'Otros',
     hsWeekly: 2,
@@ -29,6 +33,7 @@ export const coursesData = [
   },
   {
     id: 5,
+    order: 5,
     name: 'Estructuras de datos',
     area: 'TC',
     hsWeekly: 8,
@@ -36,6 +41,7 @@ export const coursesData = [
   },
   {
     id: 6,
+    order: 6,
     name: 'Programación con objetos I',
     area: 'AyL',
     hsWeekly: 8,
@@ -43,6 +49,7 @@ export const coursesData = [
   },
   {
     id: 7,
+    order: 7,
     name: 'Bases de datos',
     area: 'ISBDySI',
     hsWeekly: 6,
@@ -50,6 +57,7 @@ export const coursesData = [
   },
   {
     id: 8,
+    order: 8,
     name: 'Inglés I',
     area: 'Otros',
     hsWeekly: 2,
@@ -57,6 +65,7 @@ export const coursesData = [
   },
   {
     id: 9,
+    order: 9,
     name: 'Matemática II',
     area: 'CB',
     hsWeekly: 4,
@@ -64,6 +73,7 @@ export const coursesData = [
   },
   {
     id: 10,
+    order: 10,
     name: 'Programación con objetos II',
     area: 'AyL',
     hsWeekly: 6,
@@ -71,6 +81,7 @@ export const coursesData = [
   },
   {
     id: 11,
+    order: 11,
     name: 'Redes de computadoras',
     area: 'ASOyR',
     hsWeekly: 6,
@@ -78,6 +89,7 @@ export const coursesData = [
   },
   {
     id: 12,
+    order: 12,
     name: 'Sistemas operativos',
     area: 'ASOyR',
     hsWeekly: 6,
@@ -85,6 +97,7 @@ export const coursesData = [
   },
   {
     id: 13,
+    order: 13,
     name: 'Programación funcional',
     area: 'AyL',
     hsWeekly: 4,
@@ -92,6 +105,7 @@ export const coursesData = [
   },
   {
     id: 14,
+    order: 14,
     name: 'Construcción de interfaces de usuario',
     area: 'ISBDySI',
     hsWeekly: 6,
@@ -99,6 +113,7 @@ export const coursesData = [
   },
   {
     id: 15,
+    order: 15,
     name: 'Algoritmos',
     area: 'AyL',
     hsWeekly: 6,
@@ -106,6 +121,7 @@ export const coursesData = [
   },
   {
     id: 16,
+    order: 16,
     name: 'Estrategias de persistencia',
     area: 'ISBDySI',
     hsWeekly: 6,
@@ -113,6 +129,7 @@ export const coursesData = [
   },
   {
     id: 17,
+    order: 17,
     name: 'Laboratorio de sistemas operativos y redes',
     area: 'ASOyR',
     hsWeekly: 4,
@@ -120,6 +137,7 @@ export const coursesData = [
   },
   {
     id: 18,
+    order: 18,
     name: 'Análisis matemático',
     area: 'CB',
     hsWeekly: 6,
@@ -127,6 +145,7 @@ export const coursesData = [
   },
   {
     id: 19,
+    order: 19,
     name: 'Lógica y programación',
     area: 'TC',
     hsWeekly: 6,
@@ -134,6 +153,7 @@ export const coursesData = [
   },
   {
     id: 20,
+    order: 20,
     name: 'Elementos de ingeniería de software',
     area: 'ISBDySI',
     hsWeekly: 6,
@@ -141,6 +161,7 @@ export const coursesData = [
   },
   {
     id: 21,
+    order: 21,
     name: 'Seguridad de la información',
     area: 'ASOyR',
     hsWeekly: 4,
@@ -148,6 +169,7 @@ export const coursesData = [
   },
   {
     id: 22,
+    order: 22,
     name: 'Materia UNAHUR I',
     area: '',
     hsWeekly: 2,
@@ -155,6 +177,7 @@ export const coursesData = [
   },
   {
     id: 23,
+    order: 23,
     name: 'Inglés II',
     area: 'Otros',
     hsWeekly: 2,
@@ -162,6 +185,7 @@ export const coursesData = [
   },
   {
     id: 24,
+    order: 24,
     name: 'Matemática III',
     area: 'CB',
     hsWeekly: 4,
@@ -169,6 +193,7 @@ export const coursesData = [
   },
   {
     id: 25,
+    order: 25,
     name: 'Programación concurrente',
     area: 'AyL',
     hsWeekly: 4,
@@ -176,6 +201,7 @@ export const coursesData = [
   },
   {
     id: 26,
+    order: 26,
     name: 'Ingeniería de requerimientos',
     area: 'ISBDySI',
     hsWeekly: 4,
@@ -183,6 +209,7 @@ export const coursesData = [
   },
   {
     id: 27,
+    order: 27,
     name: 'Desarrollo de aplicaciones',
     area: 'ISBDySI',
     hsWeekly: 6,
@@ -190,6 +217,7 @@ export const coursesData = [
   },
   {
     id: 28,
+    order: 28,
     name: 'Probabilidad y estadística',
     area: 'CB',
     hsWeekly: 6,
@@ -197,6 +225,7 @@ export const coursesData = [
   },
   {
     id: 29,
+    order: 29,
     name: 'Gestión de proyectos de desarrollo de software',
     area: 'ISBDySI',
     hsWeekly: 4,
@@ -204,6 +233,7 @@ export const coursesData = [
   },
   {
     id: 30,
+    order: 30,
     name: 'Lenguajes formales y autómatas',
     area: 'TC',
     hsWeekly: 4,
@@ -211,6 +241,7 @@ export const coursesData = [
   },
   {
     id: 31,
+    order: 31,
     name: 'Programación con objetos III',
     area: 'AyL',
     hsWeekly: 4,
@@ -218,6 +249,7 @@ export const coursesData = [
   },
   {
     id: 32,
+    order: 32,
     name: 'Materia UNAHUR II',
     area: 'Otros',
     hsWeekly: 2,
@@ -225,6 +257,7 @@ export const coursesData = [
   },
   {
     id: 33,
+    order: 33,
     name: 'Práctica profesional supervisada',
     area: 'Otros',
     hsWeekly: 6,
@@ -232,6 +265,7 @@ export const coursesData = [
   },
   {
     id: 34,
+    order: 34,
     name: 'Teoría de la computación',
     area: 'TC',
     hsWeekly: 4,
@@ -239,6 +273,7 @@ export const coursesData = [
   },
   {
     id: 35,
+    order: 35,
     name: 'Arquitectura de software I',
     area: 'ISBDySI',
     hsWeekly: 4,
@@ -246,6 +281,7 @@ export const coursesData = [
   },
   {
     id: 36,
+    order: 36,
     name: 'Sistemas distribuidos y tiempo real',
     area: 'ASOyR',
     hsWeekly: 6,
@@ -253,6 +289,7 @@ export const coursesData = [
   },
   {
     id: 37,
+    order: 37,
     name: 'Tesina de licenciatura',
     area: 'Otros',
     hsWeekly: 5,
@@ -260,12 +297,14 @@ export const coursesData = [
   },
   {
     id: 38,
+    order: 38,
     name: 'Materia optativa I',
     hsWeekly: 4,
     hsTotal: 64,
   },
   {
     id: 39,
+    order: 39,
     name: 'Características de lenguajes de programación',
     area: 'AyL',
     hsWeekly: 4,
@@ -273,6 +312,7 @@ export const coursesData = [
   },
   {
     id: 40,
+    order: 40,
     name: 'Arquitectura de software II',
     area: 'ISBDySI',
     hsWeekly: 4,
@@ -280,6 +320,7 @@ export const coursesData = [
   },
   {
     id: 41,
+    order: 41,
     name: 'Arquitectura de computadoras',
     area: 'ASOyR',
     hsWeekly: 4,
@@ -287,12 +328,14 @@ export const coursesData = [
   },
   {
     id: 42,
+    order: 42,
     name: 'Materia optativa II',
     hsWeekly: 4,
     hsTotal: 64,
   },
   {
     id: 43,
+    order: 43,
     name: 'Parseo y generación de código',
     area: 'AyL',
     hsWeekly: 4,
@@ -300,6 +343,7 @@ export const coursesData = [
   },
   {
     id: 44,
+    order: 44,
     name: 'Ejercicio profesional',
     area: 'APyS',
     hsWeekly: 3,
@@ -307,6 +351,7 @@ export const coursesData = [
   },
   {
     id: 45,
+    order: 45,
     name: 'Tecnología y sociedad',
     area: 'APyS',
     hsWeekly: 3,
@@ -314,6 +359,7 @@ export const coursesData = [
   },
   {
     id: 46,
+    order: 46,
     name: 'Matemática para informática I',
     area: 'CB',
     hsWeekly: 4,
@@ -321,6 +367,7 @@ export const coursesData = [
   },
   {
     id: 47,
+    order: 47,
     name: 'Introducción a lógica y problemas computacionales',
     area: 'AyL',
     hsWeekly: 4,
@@ -328,6 +375,7 @@ export const coursesData = [
   },
   {
     id: 48,
+    order: 48,
     name: 'Organización de computadoras I',
     area: 'ASOyR',
     hsWeekly: 4,
@@ -335,6 +383,7 @@ export const coursesData = [
   },
   {
     id: 49,
+    order: 49,
     name: 'Programación estructurada',
     area: 'AyL',
     hsWeekly: 6,
@@ -342,6 +391,7 @@ export const coursesData = [
   },
   {
     id: 50,
+    order: 50,
     name: 'Matemática para informática II',
     area: 'CB',
     hsWeekly: 4,
@@ -349,6 +399,7 @@ export const coursesData = [
   },
   {
     id: 51,
+    order: 51,
     name: 'Organización de computadoras II',
     area: 'ASOyR',
     hsWeekly: 4,
@@ -356,84 +407,98 @@ export const coursesData = [
   },
   {
     id: 52,
+    order: 52,
     name: 'Literatura Argentina y Latinoamericana',
     hsWeekly: 2,
     hsTotal: 32,
   },
   {
     id: 53,
+    order: 53,
     name: 'Historia del pensamiento científico y el desarrollo tecnológico',
     hsWeekly: 2,
     hsTotal: 32,
   },
   {
     id: 54,
+    order: 54,
     name: 'Ficciones de la patria',
     hsWeekly: 2,
     hsTotal: 32,
   },
   {
     id: 55,
+    order: 55,
     name: 'Creatividad e innovación tecnológica',
     hsWeekly: 2,
     hsTotal: 32,
   },
   {
     id: 56,
+    order: 56,
     name: 'Problemas de la filosofía',
     hsWeekly: 2,
     hsTotal: 32,
   },
   {
     id: 57,
+    order: 57,
     name: 'Bases de Datos II',
     hsWeekly: 4,
     hsTotal: 64,
   },
   {
     id: 58,
+    order: 58,
     name: 'Fundamentos de aprendizaje automático',
     hsWeekly: 4,
     hsTotal: 64,
   },
   {
     id: 59,
+    order: 59,
     name: 'Introducción a la bioinformática',
     hsWeekly: 4,
     hsTotal: 64,
   },
   {
     id: 60,
+    order: 60,
     name: 'Políticas oúblicas en la sociedad de la información y la era digital',
     hsWeekly: 4,
     hsTotal: 64,
   },
   {
     id: 61,
+    order: 61,
     name: 'Sistemas de información geográfica',
     hsWeekly: 4,
     hsTotal: 64,
   },
   {
     id: 62,
+    order: 62,
     name: 'Introducción al desarrollo de videojuegos',
     hsWeekly: 4,
     hsTotal: 64,
   },
   {
     id: 63,
+    order: 63,
     name: 'Análisis estático de programas y herramientas asociadas',
     hsWeekly: 4,
     hsTotal: 64,
   },
   {
     id: 64,
+    order: 64,
     name: 'Semántica de lenguajes de programación',
     hsWeekly: 4,
     hsTotal: 64,
   },
   {
     id: 65,
+    order: 65,
     name: 'Administración de las organizaciones',
     hsWeekly: 4,
     hsTotal: 64,
