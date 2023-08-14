@@ -102,7 +102,7 @@ model Course {
   hasOptatives    Boolean  @default(false)
   hasEquivalents  Boolean  @default(false)
 
-  courses          UserCourse[]
+  progress          UserCourse[]
   periods          Period[]
   @@unique([name])
 }

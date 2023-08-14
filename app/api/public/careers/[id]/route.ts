@@ -1,4 +1,6 @@
+import { authOptions } from '@/lib/auth';
 import prisma from '@/lib/prisma';
+import { getServerSession } from 'next-auth/next';
 import { NextResponse } from 'next/server';
 
 export async function GET(
@@ -6,6 +8,11 @@ export async function GET(
   { params }: { params: { id: number } }
 ) {
   const id = Number(params.id);
+
+  const session = await getServerSession(authOptions);
+
+  const userId = session?.user.id;
+
   const career = await prisma.career.findUnique({
     where: {
       id,
@@ -16,10 +23,19 @@ export async function GET(
           id: true,
           order: true,
           courses: {
-            select: {
-              id: true,
-              name: true,
-            },
+            include: userId
+              ? {
+                  progress: {
+                    where: {
+                      userId: userId,
+                    },
+                    select: {
+                      status: true,
+                      qualification: true,
+                    },
+                  },
+                }
+              : {},
             orderBy: {
               id: 'asc',
             },
