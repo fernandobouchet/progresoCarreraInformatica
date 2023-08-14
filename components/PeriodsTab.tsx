@@ -2,8 +2,8 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { formatPeriodOrder } from '@/lib/functions';
 import CourseCard from '@/components/CourseCard';
-import LoadingBar from '@/components/ui/LoadingBar';
 import { trpc } from '@/lib/trcp';
+import PeriodsTabSkeleton from './PeriodsTabSkeleton';
 
 const PeriodsTab = ({ id }: { id: number }) => {
   const {
@@ -12,7 +12,7 @@ const PeriodsTab = ({ id }: { id: number }) => {
     isError,
   } = trpc.career.getById.useQuery({ id: id });
 
-  if (isLoading) return <LoadingBar />;
+  if (isLoading) return <PeriodsTabSkeleton />;
 
   if (isError || career === undefined) return <h2>Error</h2>;
 
