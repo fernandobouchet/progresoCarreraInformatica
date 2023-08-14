@@ -3,12 +3,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { formatPeriodOrder } from '@/lib/functions';
 import CourseCard from '@/components/CourseCard';
 import { useCareer } from '@/lib/services/public/careers';
-import LoadingBar from '@/components/ui/LoadingBar';
+import PeriodsTabSkeleton from './PeriodsTabSkeleton';
 
 const PeriodsTab = ({ id }: { id: number }) => {
   const { career, isLoading, isError } = useCareer(id);
 
-  if (isLoading) return <LoadingBar />;
+  if (isLoading) return <PeriodsTabSkeleton />;
 
   if (isError || career === undefined) return <h2>Error</h2>;
 

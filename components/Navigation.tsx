@@ -9,9 +9,9 @@ const Navigation = ({ children }: Props) => {
   return (
     <>
       <Topbar />
-      <div className="flex">
+      <div className="flex h-[calc(100dvh-3rem)] lg:h-[calc(100dvh-4rem)]">
         <Sidebar />
-        <div className="w-full h-[calc(100dvh-4rem)]">{children}</div>
+        {children}
       </div>
     </>
   );
