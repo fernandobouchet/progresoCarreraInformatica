@@ -9,7 +9,11 @@ type CareerResponse = {
       periods: {
         id: number;
         order: number;
-        courses: { id: number; name: string }[];
+        courses: {
+          id: number;
+          name: string;
+          progress: { status: string; qualification: number }[];
+        }[];
       }[];
     };
   };
