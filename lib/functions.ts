@@ -3,4 +3,11 @@ const formatPeriodOrder = (order: number) => {
   return positions[order];
 };
 
-export { formatPeriodOrder };
+const capitalizeFirstLetter = (word: string) => {
+  const firstLetterCapitalized = word.charAt(0).toUpperCase();
+  const remainingLetters = word.slice(1).toLowerCase();
+  const capitalizedWord = `${firstLetterCapitalized}${remainingLetters}`;
+  return capitalizedWord;
+};
+
+export { formatPeriodOrder, capitalizeFirstLetter };
