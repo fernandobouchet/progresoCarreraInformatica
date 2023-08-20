@@ -81,18 +81,23 @@ export async function POST(request: Request) {
     }
 
     const newData = await request.json();
+    console.log(newData, 'NEW DATA');
 
     const validatedNewData = userCourseSchema.parse(newData);
 
     const userCareer = await prisma.userCourse.create({
       data: { userId: userId, ...validatedNewData },
+      select: {
+        qualification: true,
+        status: true,
+      },
     });
 
     return NextResponse.json(
       {
         status: 'success',
         data: {
-          userCareer,
+          ...userCareer,
         },
       },
       {

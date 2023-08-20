@@ -56,7 +56,7 @@ export async function GET(
     {
       status: 'success',
       data: {
-        userCourse,
+        ...userCourse,
       },
     },
     {
@@ -102,13 +102,17 @@ export async function PATCH(
         },
       },
       data: validatedNewData,
+      select: {
+        qualification: true,
+        status: true,
+      },
     });
 
     return NextResponse.json(
       {
         status: 'success',
         data: {
-          updatedUserCourse,
+          ...updatedUserCourse,
         },
       },
       {
