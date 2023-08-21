@@ -11,7 +11,9 @@ export const careersRouter = router({
       const currentUserId = ctx.session?.user.id;
       return ctx.prisma.career.findUnique({
         where: { id },
-        include: {
+        select: {
+          id: true,
+          name: true,
           periods: {
             select: {
               id: true,

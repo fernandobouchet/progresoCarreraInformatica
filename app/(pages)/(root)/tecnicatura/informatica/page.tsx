@@ -1,6 +1,5 @@
 import { Icons } from '@/components/icons';
 import { PeriodsTab } from '@/components/PeriodsTab';
-import { trpc } from '@/lib/trcp';
 
 const PageInformatica = () => {
   return (
