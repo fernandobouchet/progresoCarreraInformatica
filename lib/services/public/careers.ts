@@ -1,26 +1,8 @@
 import fetcher from '@/lib/swr';
 import useSWR from 'swr';
 
-type CareerResponse = {
-  data: {
-    career: {
-      id: number;
-      name: string;
-      periods: {
-        id: number;
-        order: number;
-        courses: {
-          id: number;
-          name: string;
-          progress: { status: string; qualification: number }[];
-        }[];
-      }[];
-    };
-  };
-};
-
 const useCareer = (id: number) => {
-  const { data, error, isLoading } = useSWR<CareerResponse, Error>(
+  const { data, error, isLoading } = useSWR<CareerFullData, Error>(
     `/api/public/careers/${id}`,
     fetcher
   );

@@ -10,4 +10,41 @@ const capitalizeFirstLetter = (word: string) => {
   return capitalizedWord;
 };
 
-export { formatPeriodOrder, capitalizeFirstLetter };
+const updateCourseInCache = (
+  updatedUserCourse: UpdatedUserCourseResponse,
+  cacheData: CareerFullData,
+  courseId: number
+) => {
+  const updatedPeriods = cacheData.data.career.periods.map((cachedPeriod) => {
+    const updatedCourses = cachedPeriod.courses.map((cachedCourse) => {
+      if (cachedCourse.id === courseId) {
+        const updatedProgress = [updatedUserCourse.data];
+        return {
+          ...cachedCourse,
+          progress: updatedProgress,
+        };
+      }
+      return cachedCourse;
+    });
+
+    return {
+      ...cachedPeriod,
+      courses: updatedCourses,
+    };
+  });
+
+  const updatedCacheData = {
+    ...cacheData,
+    data: {
+      ...cacheData.data,
+      career: {
+        ...cacheData.data.career,
+        periods: updatedPeriods,
+      },
+    },
+  };
+
+  return updatedCacheData;
+};
+
+export { formatPeriodOrder, capitalizeFirstLetter, updateCourseInCache };

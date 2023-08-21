@@ -4,14 +4,7 @@ import CourseCardForm from '@/components/CourseCardForm';
 import CourseStatusChip from '@/components/CourseStatusChip';
 
 interface Props {
-  course: {
-    id: number;
-    name: string;
-    progress: {
-      status: string;
-      qualification: number;
-    }[];
-  };
+  course: Course;
 }
 
 const CourseCard = ({ course }: Props) => {
