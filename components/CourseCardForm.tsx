@@ -34,9 +34,11 @@ import { createUserCourse, updateUserCourse } from '@/lib/services/user/course';
 import { updateCourseInCache } from '@/lib/functions';
 import { CourseStatus } from '@prisma/client';
 import { DialogClose } from '@radix-ui/react-dialog';
+import { useCareer } from '@/lib/services/public/careers';
 
 type Props = {
   course: Course;
+  careerId: number;
 };
 
 const FormSchema = z.object({
@@ -44,8 +46,9 @@ const FormSchema = z.object({
   qualification: z.coerce.number().min(0).max(10),
 });
 
-const CourseCardForm = ({ course }: Props) => {
+const CourseCardForm = ({ course, careerId }: Props) => {
   const { mutate } = useSWRConfig();
+  const { career } = useCareer(careerId);
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -60,27 +63,30 @@ const CourseCardForm = ({ course }: Props) => {
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    mutate(
-      (key) =>
-        typeof key === 'string' && key.startsWith('/api/public/careers/'),
-      course.progress.length
-        ? updateUserCourse(course.id, data)
-        : createUserCourse(course.id, data),
-      {
-        populateCache: (
-          updatedUserCourse: UpdatedUserCourseResponse,
-          cacheData: CareerFullData
-        ) => {
-          const updatedCacheData = updateCourseInCache(
-            updatedUserCourse,
-            cacheData,
-            course.id
-          );
-          return updatedCacheData;
-        },
-        revalidate: false,
-      }
-    );
+    career &&
+      mutate(
+        (key: string) => key.startsWith('/api/public/careers/'),
+        course.progress.length
+          ? updateUserCourse(course.id, data)
+          : createUserCourse(course.id, data),
+        {
+          optimisticData: () => {
+            return updateCourseInCache(
+              { data },
+              { data: { career } },
+              course.id
+            );
+          },
+          rollbackOnError: true,
+          populateCache: (
+            data: UpdatedUserCourseResponse,
+            cacheData: CareerFullData
+          ) => {
+            return updateCourseInCache(data, cacheData, course.id);
+          },
+          revalidate: false,
+        }
+      );
   }
 
   return (

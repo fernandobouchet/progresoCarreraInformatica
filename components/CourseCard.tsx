@@ -5,9 +5,10 @@ import CourseStatusChip from '@/components/CourseStatusChip';
 
 interface Props {
   course: Course;
+  careerId: number;
 }
 
-const CourseCard = ({ course }: Props) => {
+const CourseCard = ({ course, careerId }: Props) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -20,7 +21,7 @@ const CourseCard = ({ course }: Props) => {
           </CardFooter>
         </Card>
       </DialogTrigger>
-      <CourseCardForm course={course} />
+      <CourseCardForm course={course} careerId={careerId} />
     </Dialog>
   );
 };
