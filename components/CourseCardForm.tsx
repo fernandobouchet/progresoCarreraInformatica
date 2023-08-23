@@ -36,6 +36,8 @@ import { updateCourseInCache } from '@/lib/functions';
 import { CourseStatus } from '@prisma/client';
 import { DialogClose } from '@radix-ui/react-dialog';
 import { useCareer } from '@/lib/services/public/careers';
+import { useToast } from './ui/use-toast';
+import { ToastAction } from './ui/toast';
 
 type Props = {
   course: Course;
@@ -50,6 +52,7 @@ const FormSchema = z.object({
 const CourseCardForm = ({ course, careerId }: Props) => {
   const { mutate } = useSWRConfig();
   const { career } = useCareer(careerId);
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -64,7 +67,8 @@ const CourseCardForm = ({ course, careerId }: Props) => {
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    career &&
+    try {
+      if (!career) return;
       mutate(
         (key: string) => key.startsWith('/api/public/careers/'),
         course.progress.length
@@ -88,6 +92,20 @@ const CourseCardForm = ({ course, careerId }: Props) => {
           revalidate: false,
         }
       );
+      toast({
+        variant: 'default',
+        title: 'Modificación realizada con éxito!',
+        description: `Se modificó exitosamente la asignatura ${course.name}.`,
+        action: <ToastAction altText="Ok">Ok</ToastAction>,
+      });
+    } catch (error) {
+      toast({
+        variant: 'destructive',
+        title: 'Falló en realizar la modificación!',
+        description: `Hubo un error al intentar modificar la asignatura ${course.name}, por favor intente nuevamente.`,
+        action: <ToastAction altText="Ok">Ok</ToastAction>,
+      });
+    }
   }
 
   return (
@@ -178,13 +196,16 @@ const CourseCardForm = ({ course, careerId }: Props) => {
               />
             </div>
             <DialogClose asChild>
-              <Button type="submit">Guardar</Button>
+              <Button disabled={!career} type="submit">
+                Guardar
+              </Button>
             </DialogClose>
           </form>
         </Form>
-        <Button>Más información</Button>
       </div>
-      <DialogFooter></DialogFooter>
+      <DialogFooter>
+        <Button>Más información</Button>
+      </DialogFooter>
     </DialogContent>
   );
 };
