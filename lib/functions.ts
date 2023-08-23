@@ -15,9 +15,6 @@ const updateCourseInCache = (
   cacheData: CareerFullData,
   courseId: number
 ) => {
-  console.log(updatedUserCourse);
-  console.log(cacheData);
-  console.log(courseId);
   const updatedPeriods = cacheData.data.career.periods.map((cachedPeriod) => {
     const updatedCourses = cachedPeriod.courses.map((cachedCourse) => {
       if (cachedCourse.id === courseId) {

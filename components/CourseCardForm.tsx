@@ -28,6 +28,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import { useSWRConfig } from 'swr';
 import { createUserCourse, updateUserCourse } from '@/lib/services/user/course';
@@ -159,11 +160,13 @@ const CourseCardForm = ({ course, careerId }: Props) => {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent className="border-none">
-                        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value) => (
-                          <SelectItem key={value} value={value.toString()}>
-                            {value.toString()}
-                          </SelectItem>
-                        ))}
+                        <ScrollArea className="h-[200px] w-[350px] rounded-md pr-3">
+                          {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value) => (
+                            <SelectItem key={value} value={value.toString()}>
+                              {value.toString()}
+                            </SelectItem>
+                          ))}
+                        </ScrollArea>
                       </SelectContent>
                     </Select>
                     <FormDescription>
