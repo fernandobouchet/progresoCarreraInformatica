@@ -96,7 +96,6 @@ const CourseCardForm = ({ course, careerId }: Props) => {
         variant: 'default',
         title: 'Modificación realizada con éxito!',
         description: `Se modificó exitosamente la asignatura ${course.name}.`,
-        action: <ToastAction altText="Ok">Ok</ToastAction>,
       });
     } catch (error) {
       toast({
