@@ -102,7 +102,6 @@ const CourseCardForm = ({ course, careerId }: Props) => {
         variant: 'destructive',
         title: 'Falló en realizar la modificación!',
         description: `Hubo un error al intentar modificar la asignatura ${course.name}, por favor intente nuevamente.`,
-        action: <ToastAction altText="Ok">Ok</ToastAction>,
       });
     },
     onSuccess: () => {
@@ -110,7 +109,6 @@ const CourseCardForm = ({ course, careerId }: Props) => {
         variant: 'default',
         title: 'Modificación realizada con éxito!',
         description: `Se modificó exitosamente la asignatura ${course.name}.`,
-        action: <ToastAction altText="Ok">Ok</ToastAction>,
       });
     },
   });
