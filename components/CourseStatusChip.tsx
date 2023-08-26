@@ -5,13 +5,13 @@ import { CourseStatus } from '@prisma/client';
 type Props = {
   progress: {
     status: CourseStatus;
-    qualification: number;
+    qualification?: number;
   }[];
 };
 
 const CourseStatusChip = ({ progress }: Props) => {
   const normalizedStatus = progress?.length
-    ? capitalizeFirstLetter(progress[0].status)
+    ? capitalizeFirstLetter(progress[0]?.status)
     : 'Pendiente';
 
   return (

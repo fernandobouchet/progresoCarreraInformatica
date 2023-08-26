@@ -19,7 +19,7 @@ interface Props {
   course: Course;
   form: UseFormReturn<
     {
-      qualification: number;
+      qualification?: number;
       status: 'CURSANDO' | 'PENDIENTE' | 'REGULARIZADA' | 'APROBADA';
     },
     any,
@@ -37,15 +37,11 @@ const StatusSelectFormField = ({ course, form }: Props) => {
           <FormLabel>Estado</FormLabel>
           <Select
             onValueChange={field.onChange}
-            defaultValue={
-              course?.progress?.length
-                ? course?.progress[0]?.status
-                : 'PENDIENTE'
-            }
+            defaultValue={course?.progress[0]?.status || 'PENDIENTE'}
           >
             <FormControl>
               <SelectTrigger>
-                <SelectValue placeholder="Selecciona el estado actual de la asignatura" />
+                <SelectValue />
               </SelectTrigger>
             </FormControl>
             <SelectContent className="border-none">

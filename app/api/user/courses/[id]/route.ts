@@ -101,7 +101,13 @@ export async function PATCH(
           courseId,
         },
       },
-      data: validatedNewData,
+      data: {
+        status: validatedNewData.status,
+        qualification:
+          validatedNewData.qualification === undefined
+            ? null
+            : validatedNewData.qualification,
+      },
       select: {
         qualification: true,
         status: true,

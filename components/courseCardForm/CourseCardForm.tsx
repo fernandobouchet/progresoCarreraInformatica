@@ -8,7 +8,6 @@ import { Form } from '@/components/ui/form';
 import {
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
@@ -31,7 +30,7 @@ type Props = {
 
 const FormSchema = z.object({
   status: z.nativeEnum(CourseStatus),
-  qualification: z.coerce.number().min(0).max(10),
+  qualification: z.coerce.number().min(0).max(10).optional(),
 });
 
 const CourseCardForm = ({ course, careerId }: Props) => {
@@ -42,27 +41,29 @@ const CourseCardForm = ({ course, careerId }: Props) => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      status: course?.progress?.length
-        ? course.progress[0].status
-        : 'PENDIENTE',
-      qualification: course?.progress?.length
-        ? course.progress[0].qualification
-        : 0,
+      status: course?.progress[0]?.status || 'PENDIENTE',
+      qualification: course?.progress[0]?.qualification,
     },
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
+    const newData = {
+      status: data.status,
+      qualification:
+        data.status !== 'APROBADA' ? undefined : data.qualification,
+    };
+
     try {
       if (!career) return;
       mutate(
         (key: string) => key.startsWith('/api/public/careers/'),
         course.progress.length
-          ? updateUserCourse(course.id, data)
-          : createUserCourse(course.id, data),
+          ? updateUserCourse(course.id, newData)
+          : createUserCourse(course.id, newData),
         {
           optimisticData: () => {
             return updateCourseInCache(
-              { data },
+              { data: { ...newData } },
               { data: { career } },
               course.id
             );
@@ -72,7 +73,11 @@ const CourseCardForm = ({ course, careerId }: Props) => {
             data: UpdatedUserCourseResponse,
             cacheData: CareerFullData
           ) => {
-            return updateCourseInCache(data, cacheData, course.id);
+            return updateCourseInCache(
+              { data: { ...newData } },
+              cacheData,
+              course.id
+            );
           },
           revalidate: false,
         }
@@ -112,7 +117,19 @@ const CourseCardForm = ({ course, careerId }: Props) => {
             </div>
             <div className="flex w-full">
               <DialogClose asChild>
-                <Button className="ml-auto" disabled={!career} type="submit">
+                <Button
+                  className="ml-auto"
+                  disabled={
+                    (form.watch('status') === course?.progress[0]?.status &&
+                      Number(form.watch('qualification')) ===
+                        course?.progress[0]?.qualification) ||
+                    (course?.progress[0] === undefined &&
+                      form.watch('status') === 'PENDIENTE') ||
+                    (form.watch('status') === 'APROBADA' &&
+                      form.watch('qualification') === undefined)
+                  }
+                  type="submit"
+                >
                   Guardar cambios
                 </Button>
               </DialogClose>

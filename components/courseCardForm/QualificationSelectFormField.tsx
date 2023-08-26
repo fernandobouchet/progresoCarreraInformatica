@@ -20,7 +20,7 @@ interface Props {
   course: Course;
   form: UseFormReturn<
     {
-      qualification: number;
+      qualification?: number;
       status: 'CURSANDO' | 'PENDIENTE' | 'REGULARIZADA' | 'APROBADA';
     },
     any,
@@ -37,16 +37,13 @@ const QualificationSelectFormField = ({ course, form }: Props) => {
         <FormItem className="max-w-fit">
           <FormLabel>Calificación</FormLabel>
           <Select
+            disabled={form.watch('status') !== 'APROBADA'}
             onValueChange={field.onChange}
-            defaultValue={
-              course?.progress?.length
-                ? course.progress[0].qualification.toString()
-                : '0'
-            }
+            defaultValue={course?.progress[0]?.qualification?.toString()}
           >
             <FormControl>
               <SelectTrigger>
-                <SelectValue placeholder="Selecciona la calificación de la asignatura" />
+                <SelectValue placeholder="Aún sin calificar" />
               </SelectTrigger>
             </FormControl>
             <SelectContent className="border-none text-center">
