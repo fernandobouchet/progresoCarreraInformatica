@@ -81,7 +81,6 @@ export async function POST(request: Request) {
     }
 
     const newData = await request.json();
-    console.log(newData, 'NEW DATA');
 
     const validatedNewData = userCourseSchema.parse(newData);
 
