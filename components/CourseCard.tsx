@@ -17,7 +17,7 @@ const CourseCard = ({ course, careerId }: Props) => {
             <CardTitle className="text-sm font-medium">{course.name}</CardTitle>
           </CardHeader>
           <CardFooter className="p-0 justify-end text-sm">
-            <CourseStatusChip progress={course.progress} />
+            <CourseStatusChip progress={course?.progress} />
           </CardFooter>
         </Card>
       </DialogTrigger>

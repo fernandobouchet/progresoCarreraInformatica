@@ -19,7 +19,7 @@ interface Props {
   course: Course;
   form: UseFormReturn<
     {
-      qualification?: number;
+      qualification: number | null;
       status: 'CURSANDO' | 'PENDIENTE' | 'REGULARIZADA' | 'APROBADA';
     },
     any,

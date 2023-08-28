@@ -30,7 +30,7 @@ type Props = {
 
 const FormSchema = z.object({
   status: z.nativeEnum(CourseStatus),
-  qualification: z.coerce.number().min(0).max(10).optional(),
+  qualification: z.coerce.number().min(0).max(10).nullable(),
 });
 
 const CourseCardForm = ({ course, careerId }: Props) => {
@@ -38,19 +38,21 @@ const CourseCardForm = ({ course, careerId }: Props) => {
   const { career } = useCareer(careerId);
   const { toast } = useToast();
 
+  const currentStatus = course?.progress[0]?.status;
+  const currentQualification = course?.progress[0]?.qualification;
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      status: course?.progress[0]?.status || 'PENDIENTE',
-      qualification: course?.progress[0]?.qualification,
+      status: currentStatus || 'PENDIENTE',
+      qualification: currentQualification || null,
     },
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     const newData = {
       status: data.status,
-      qualification:
-        data.status !== 'APROBADA' ? undefined : data.qualification,
+      qualification: data.status !== 'APROBADA' ? null : data.qualification,
     };
 
     try {
@@ -120,13 +122,14 @@ const CourseCardForm = ({ course, careerId }: Props) => {
                 <Button
                   className="ml-auto"
                   disabled={
-                    (form.watch('status') === course?.progress[0]?.status &&
-                      Number(form.watch('qualification')) ===
-                        course?.progress[0]?.qualification) ||
-                    (course?.progress[0] === undefined &&
-                      form.watch('status') === 'PENDIENTE') ||
+                    (form.watch('status') !== 'APROBADA' &&
+                      form.watch('status') === currentStatus) ||
+                    (form.watch('status') === 'PENDIENTE' &&
+                      currentStatus === undefined) ||
                     (form.watch('status') === 'APROBADA' &&
-                      form.watch('qualification') === undefined)
+                      (form.watch('qualification') === null ||
+                        Number(form.watch('qualification')) ===
+                          currentQualification))
                   }
                   type="submit"
                 >

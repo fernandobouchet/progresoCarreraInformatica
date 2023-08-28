@@ -103,10 +103,7 @@ export async function PATCH(
       },
       data: {
         status: validatedNewData.status,
-        qualification:
-          validatedNewData.qualification === undefined
-            ? null
-            : validatedNewData.qualification,
+        qualification: validatedNewData.qualification,
       },
       select: {
         qualification: true,

@@ -21,13 +21,13 @@ type CareerFullData = {
 
 type UpdatedUserCourse = {
   status: keyof typeof CourseStatus;
-  qualification?: number;
+  qualification?: number | null;
 };
 
 type UpdatedUserCourseResponse = {
   data: {
     status: keyof typeof CourseStatus;
-    qualification?: number;
+    qualification?: number | null;
   };
 };
 
@@ -36,6 +36,6 @@ type Course = {
   name: string;
   progress: {
     status: keyof typeof CourseStatus;
-    qualification?: number;
+    qualification?: number | null;
   }[];
 };

@@ -5,7 +5,7 @@ import { CourseStatus } from '@prisma/client';
 type Props = {
   progress: {
     status: CourseStatus;
-    qualification?: number;
+    qualification?: number | null;
   }[];
 };
 
