@@ -100,7 +100,14 @@ const CourseCardForm = ({ course, careerId }: Props) => {
   }
 
   return (
-    <DialogContent className="max-w-[calc(100dvw-1rem)] sm:max-w-[40rem] border-none rounded-2xl">
+    <DialogContent
+      onCloseAutoFocus={() => form.reset()}
+      onInteractOutside={() => {
+        form.reset();
+      }}
+      asChild={false}
+      className="max-w-[calc(100dvw-1rem)] sm:max-w-[40rem] border-none rounded-2xl"
+    >
       <DialogHeader>
         <DialogTitle>{course?.name}</DialogTitle>
         <DialogDescription>
