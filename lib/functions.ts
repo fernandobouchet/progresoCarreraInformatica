@@ -47,4 +47,31 @@ const updateCourseInCache = (
   return updatedCacheData;
 };
 
-export { formatPeriodOrder, capitalizeFirstLetter, updateCourseInCache };
+const organizarMateriasPorProgreso = (career: Career) => {
+  const materiasPorProgreso: CareerProgress = {
+    APROBADA: [],
+    PENDIENTE: [],
+    REGULARIZADA: [],
+    CURSANDO: [],
+  };
+
+  for (const period of career.periods) {
+    for (const course of period.courses) {
+      const progressStatus = course.progress[0]?.status;
+      const courseName = course.name;
+      if (!progressStatus) {
+        materiasPorProgreso.PENDIENTE.push(courseName);
+      } else {
+        materiasPorProgreso[progressStatus].push(courseName);
+      }
+    }
+  }
+
+  return materiasPorProgreso;
+};
+export {
+  formatPeriodOrder,
+  capitalizeFirstLetter,
+  updateCourseInCache,
+  organizarMateriasPorProgreso,
+};

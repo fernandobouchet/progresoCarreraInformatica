@@ -5,6 +5,16 @@ const CourseStatus: {
   APROBADA: 'APROBADA';
 };
 
+type Career = {
+  id: number;
+  name: string;
+  periods: {
+    id: number;
+    order: number;
+    courses: Course[];
+  }[];
+};
+
 type CareerFullData = {
   data: {
     career: {
@@ -38,4 +48,11 @@ type Course = {
     status: keyof typeof CourseStatus;
     qualification?: number | null;
   }[];
+};
+
+type CareerProgress = {
+  APROBADA: string[];
+  PENDIENTE: string[];
+  REGULARIZADA: string[];
+  CURSANDO: string[];
 };
