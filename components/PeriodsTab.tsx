@@ -1,21 +1,12 @@
-'use client';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { formatPeriodOrder } from '@/lib/functions';
 import CourseCard from '@/components/CourseCard';
-import { trpc } from '@/lib/trcp';
-import PeriodsTabSkeleton from './PeriodsTabSkeleton';
 
-const PeriodsTab = ({ id }: { id: number }) => {
-  const {
-    data: career,
-    isLoading,
-    isError,
-  } = trpc.career.getById.useQuery({ id: id });
+interface Props {
+  career: Career | null;
+}
 
-  if (isLoading) return <PeriodsTabSkeleton />;
-
-  if (isError || career === undefined) return <h2>Error</h2>;
-
+const PeriodsTab = ({ career }: Props) => {
   return (
     <Tabs defaultValue={'1'} className="w-full">
       <TabsList className="flex w-full p-0 h-14 border-none rounded-full shadow-sm bg-card">

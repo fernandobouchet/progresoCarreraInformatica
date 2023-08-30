@@ -5,6 +5,16 @@ enum CourseStatus {
   APROBADA = 'APROBADA',
 }
 
+type Career = {
+  id: number;
+  name: string;
+  periods: {
+    id: number;
+    order: number;
+    courses: Course[];
+  }[];
+};
+
 type Course = {
   id: number;
   name: string;

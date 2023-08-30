@@ -1,5 +1,5 @@
+import CareerData from '@/components/CareerData';
 import { Icons } from '@/components/icons';
-import { PeriodsTab } from '@/components/PeriodsTab';
 
 const PageLicenciatura = () => {
   return (
@@ -8,8 +8,7 @@ const PageLicenciatura = () => {
       <div className="py-4 lg:py-8">
         <Icons.line />
       </div>
-      <h2 className="subtitle">Año</h2>
-      <PeriodsTab id={1} />
+      <CareerData id={1} />
     </main>
   );
 };
