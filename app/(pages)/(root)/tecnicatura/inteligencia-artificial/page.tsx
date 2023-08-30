@@ -1,5 +1,5 @@
 import { Icons } from '@/components/icons';
-import { PeriodsTab } from '@/components/PeriodsTab';
+import CareerData from '@/components/CareerData';
 
 const PageInteligenciaArtificial = () => {
   return (
@@ -8,7 +8,7 @@ const PageInteligenciaArtificial = () => {
       <div className="py-4 lg:py-8">
         <Icons.line />
       </div>
-      <PeriodsTab id={5} />
+      <CareerData id={5} />
     </main>
   );
 };

@@ -1,5 +1,5 @@
 import { Icons } from '@/components/icons';
-import { PeriodsTab } from '@/components/PeriodsTab';
+import CareerData from '@/components/CareerData';
 
 const PageInformatica = () => {
   return (
@@ -8,7 +8,7 @@ const PageInformatica = () => {
       <div className="py-4 lg:py-8">
         <Icons.line />
       </div>
-      <PeriodsTab id={2} />
+      <CareerData id={2} />
     </main>
   );
 };
