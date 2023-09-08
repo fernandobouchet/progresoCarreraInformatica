@@ -27,6 +27,14 @@ export async function GET(request: NextRequest) {
       where: {
         userId: userId,
       },
+      select: {
+        career: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+      },
     });
 
     return NextResponse.json(
@@ -74,11 +82,29 @@ export async function POST(request: Request) {
 
     const newData = await request.json();
 
-    const validatedNewData = userCareerSchema.parse(newData);
+    const validatedNewData = userCareerSchema.parse(newData.courseIds);
 
-    const newUserCareer = await prisma.userCareer.create({
-      data: { userId: userId, ...validatedNewData },
+    console.log(validatedNewData);
+
+    const news = validatedNewData.map((data) => ({
+      userId: userId,
+      careerId: data,
+    }));
+
+    console.log(news);
+
+    // Iterar sobre el array de IDs y crear un registro para cada uno
+    const deleteOld = await prisma.userCareer.deleteMany({
+      where: {
+        userId: userId,
+      },
     });
+
+    const newUserCareer = await prisma.userCareer.createMany({
+      data: news,
+    });
+
+    console.log(newUserCareer);
 
     return NextResponse.json(
       {

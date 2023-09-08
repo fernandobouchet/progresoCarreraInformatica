@@ -4,6 +4,7 @@ import PeriodsTabSkeleton from '@/components/PeriodsTabSkeleton';
 import { PeriodsTab } from '@/components/PeriodsTab';
 import CareerBadgesInfo from './CareerBadgesInfo';
 import { organizarMateriasPorProgreso } from '@/lib/functions';
+import { Progress } from './ui/progress';
 
 const CareerData = ({ id }: { id: number }) => {
   const { career, isLoading, isError } = useCareer(id);
@@ -15,7 +16,8 @@ const CareerData = ({ id }: { id: number }) => {
   const careerProgress = organizarMateriasPorProgreso(career);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center w-full">
+      <Progress  data={careerProgress}/>
       <CareerBadgesInfo progress={careerProgress} />
       <h2 className="subtitle">{id === 1 ? 'Año' : 'Cuatrimestre'}</h2>
       <PeriodsTab career={career} />

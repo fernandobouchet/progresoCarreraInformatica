@@ -51,6 +51,7 @@ type Course = {
 };
 
 type CareerProgress = {
+  TOTAL: number;
   APROBADA: string[];
   PENDIENTE: string[];
   REGULARIZADA: string[];

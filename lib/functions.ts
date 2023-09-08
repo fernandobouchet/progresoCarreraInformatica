@@ -49,6 +49,7 @@ const updateCourseInCache = (
 
 const organizarMateriasPorProgreso = (career: Career) => {
   const materiasPorProgreso: CareerProgress = {
+    TOTAL: 0,
     APROBADA: [],
     PENDIENTE: [],
     REGULARIZADA: [],
@@ -59,6 +60,7 @@ const organizarMateriasPorProgreso = (career: Career) => {
     for (const course of period.courses) {
       const progressStatus = course.progress[0]?.status;
       const courseName = course.name;
+      materiasPorProgreso.TOTAL += 1;
       if (!progressStatus) {
         materiasPorProgreso.PENDIENTE.push(courseName);
       } else {
@@ -67,6 +69,7 @@ const organizarMateriasPorProgreso = (career: Career) => {
     }
   }
 
+  console.log(materiasPorProgreso);
   return materiasPorProgreso;
 };
 export {
