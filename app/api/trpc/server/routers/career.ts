@@ -8,6 +8,7 @@ export const careersRouter = router({
   getById: publicProcedure
     .input(z.object({ id: z.number() }))
     .query(async ({ input: { id }, ctx }) => {
+      const currentUserId = ctx.session?.user.id;
       return ctx.prisma.career.findUnique({
         where: { id },
         include: {
@@ -19,6 +20,10 @@ export const careersRouter = router({
                 select: {
                   id: true,
                   name: true,
+                  progress:
+                    currentUserId === undefined
+                      ? false
+                      : { where: { userId: currentUserId } },
                 },
               },
             },

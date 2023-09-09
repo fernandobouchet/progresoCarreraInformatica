@@ -1,10 +1,15 @@
 import { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch';
 import { inferAsyncReturnType } from '@trpc/server';
 import prisma from '@/lib/prisma';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '@/lib/auth';
 
 export async function createContextInner() {
+  const session = await getServerSession(authOptions);
+
   return {
     prisma,
+    session: session,
   };
 }
 
