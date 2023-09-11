@@ -111,7 +111,7 @@ model UserCourse {
   id               String       @id @default(cuid())
   courseId         Int
   userId           String
-  qualification    Int          @default(0)
+  qualification    Int?
   status           CourseStatus @default(PENDIENTE)
 
   course           Course       @relation(fields: [courseId], references: [id], onDelete: Cascade)
