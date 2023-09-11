@@ -32,6 +32,8 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import { CourseStatus } from '@prisma/client';
 import { DialogClose } from '@radix-ui/react-dialog';
+import { useToast } from './ui/use-toast';
+import { ToastAction } from './ui/toast';
 import { trpc } from '@/lib/trcp';
 
 type Props = {
@@ -46,6 +48,7 @@ const FormSchema = z.object({
 
 const CourseCardForm = ({ course, careerId }: Props) => {
   const utils = trpc.useContext();
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -95,9 +98,20 @@ const CourseCardForm = ({ course, careerId }: Props) => {
         { id: careerId },
         context?.previousCareerData
       );
+      toast({
+        variant: 'destructive',
+        title: 'Falló en realizar la modificación!',
+        description: `Hubo un error al intentar modificar la asignatura ${course.name}, por favor intente nuevamente.`,
+        action: <ToastAction altText="Ok">Ok</ToastAction>,
+      });
     },
     onSuccess: () => {
-      console.log('Update succesfully');
+      toast({
+        variant: 'default',
+        title: 'Modificación realizada con éxito!',
+        description: `Se modificó exitosamente la asignatura ${course.name}.`,
+        action: <ToastAction altText="Ok">Ok</ToastAction>,
+      });
     },
   });
 
@@ -197,7 +211,9 @@ const CourseCardForm = ({ course, careerId }: Props) => {
             </DialogClose>
           </form>
         </Form>
-        <Button>Más información</Button>
+        <DialogFooter>
+          <Button>Más información</Button>
+        </DialogFooter>
       </div>
       <DialogFooter></DialogFooter>
     </DialogContent>
