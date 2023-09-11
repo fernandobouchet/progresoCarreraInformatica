@@ -10,6 +10,6 @@ type Course = {
   name: string;
   progress: {
     status: keyof typeof CourseStatus;
-    qualification: number;
+    qualification: number | null;
   }[];
 };

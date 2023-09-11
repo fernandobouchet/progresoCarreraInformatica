@@ -13,14 +13,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { UseFormReturn } from 'react-hook-form/dist/types/form';
 
 interface Props {
   course: Course;
   form: UseFormReturn<
     {
-      qualification: number;
+      qualification?: number | null;
       status: 'CURSANDO' | 'PENDIENTE' | 'REGULARIZADA' | 'APROBADA';
     },
     any,
@@ -32,36 +31,29 @@ const StatusSelectFormField = ({ form, course }: Props) => {
   return (
     <FormField
       control={form.control}
-      name="qualification"
+      name="status"
       render={({ field }) => (
         <FormItem className="max-w-fit">
-          <FormLabel>Calificación</FormLabel>
+          <FormLabel>Estado</FormLabel>
           <Select
             onValueChange={field.onChange}
             defaultValue={
-              course?.progress?.length
-                ? course.progress[0].qualification.toString()
-                : '0'
+              course?.progress ? course?.progress[0]?.status : 'PENDIENTE'
             }
           >
             <FormControl>
               <SelectTrigger>
-                <SelectValue placeholder="Selecciona la calificación de la asignatura" />
+                <SelectValue placeholder="Selecciona el estado actual de la asignatura" />
               </SelectTrigger>
             </FormControl>
             <SelectContent className="border-none">
-              <ScrollArea className="h-[200px] w-auto rounded-md pr-3">
-                {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value) => (
-                  <SelectItem key={value} value={value.toString()}>
-                    {value.toString()}
-                  </SelectItem>
-                ))}
-              </ScrollArea>
+              <SelectItem value="CURSANDO">Cursando</SelectItem>
+              <SelectItem value="APROBADA">Aprobada</SelectItem>
+              <SelectItem value="PENDIENTE">Pendiente</SelectItem>
+              <SelectItem value="REGULARIZADA">Regularizada</SelectItem>
             </SelectContent>
           </Select>
-          <FormDescription>
-            Esta es la calificación de la asignatura.
-          </FormDescription>
+          <FormDescription>Estado de la asignatura.</FormDescription>
           <FormMessage />
         </FormItem>
       )}

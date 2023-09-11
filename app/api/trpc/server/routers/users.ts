@@ -11,7 +11,7 @@ export const usersRouter = router({
       z.object({
         courseId: z.number(),
         status: z.nativeEnum(CourseStatus),
-        qualification: z.number(),
+        qualification: z.number().nullable().optional(),
       })
     )
     .mutation(async ({ input: { courseId, status, qualification }, ctx }) => {
