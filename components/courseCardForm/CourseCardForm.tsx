@@ -4,23 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-
+import { Form } from '@/components/ui/form';
 import {
   DialogContent,
   DialogDescription,
@@ -28,13 +12,13 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import { CourseStatus } from '@prisma/client';
 import { DialogClose } from '@radix-ui/react-dialog';
-import { useToast } from './ui/use-toast';
-import { ToastAction } from './ui/toast';
+import { useToast } from '@/components/ui/use-toast';
 import { trpc } from '@/lib/trcp';
+import QualificationSelectFormField from './QualificationSelectFormField';
+import StatusSelectFormField from './StatusSelectFormField';
 
 type Props = {
   course: Course;
@@ -132,77 +116,8 @@ const CourseCardForm = ({ course, careerId }: Props) => {
             className="w-full space-y-6"
           >
             <div className="flex justify-between">
-              <FormField
-                control={form.control}
-                name="status"
-                render={({ field }) => (
-                  <FormItem className="max-w-fit">
-                    <FormLabel>Estado</FormLabel>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={
-                        course?.progress?.length
-                          ? course?.progress[0]?.status
-                          : 'PENDIENTE'
-                      }
-                    >
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Selecciona el estado actual de la asignatura" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent className="border-none">
-                        <SelectItem value="CURSANDO">Cursando</SelectItem>
-                        <SelectItem value="APROBADA">Aprobada</SelectItem>
-                        <SelectItem value="PENDIENTE">Pendiente</SelectItem>
-                        <SelectItem value="REGULARIZADA">
-                          Regularizada
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormDescription>
-                      Este es el estado de la asignatura.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="qualification"
-                render={({ field }) => (
-                  <FormItem className="max-w-fit">
-                    <FormLabel>Calificación</FormLabel>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={
-                        course?.progress?.length
-                          ? course.progress[0].qualification.toString()
-                          : '0'
-                      }
-                    >
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Selecciona la calificación de la asignatura" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent className="border-none">
-                        <ScrollArea className="h-[200px] w-[350px] rounded-md pr-3">
-                          {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value) => (
-                            <SelectItem key={value} value={value.toString()}>
-                              {value.toString()}
-                            </SelectItem>
-                          ))}
-                        </ScrollArea>
-                      </SelectContent>
-                    </Select>
-                    <FormDescription>
-                      Esta es la calificación de la asignatura.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              <QualificationSelectFormField course={course} form={form} />
+              <StatusSelectFormField course={course} form={form} />
             </div>
             <DialogClose asChild>
               <Button type="submit">Guardar</Button>

@@ -1,6 +1,6 @@
 import { Card, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogTrigger } from '@/components/ui/dialog';
-import CourseCardForm from '@/components/CourseCardForm';
+import CourseCardForm from '@/components/courseCardForm/CourseCardForm';
 import CourseStatusChip from '@/components/CourseStatusChip';
 
 interface Props {
