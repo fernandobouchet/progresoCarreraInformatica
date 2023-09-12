@@ -38,12 +38,14 @@ const StatusSelectFormField = ({ form, course }: Props) => {
           <Select
             onValueChange={field.onChange}
             defaultValue={
-              course?.progress ? course?.progress[0]?.status : 'PENDIENTE'
+              course?.progress?.length
+                ? course?.progress[0]?.status
+                : 'PENDIENTE'
             }
           >
             <FormControl>
               <SelectTrigger>
-                <SelectValue placeholder="Selecciona el estado actual de la asignatura" />
+                <SelectValue />
               </SelectTrigger>
             </FormControl>
             <SelectContent className="border-none">

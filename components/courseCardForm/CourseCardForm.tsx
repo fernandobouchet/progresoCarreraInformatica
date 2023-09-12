@@ -33,10 +33,10 @@ const FormSchema = z.object({
 const CourseCardForm = ({ course, careerId }: Props) => {
   const utils = trpc.useContext();
   const { toast } = useToast();
-  const currentStatus = course?.progress
+  const currentStatus = course?.progress?.length
     ? course?.progress[0]?.status
     : 'PENDIENTE';
-  const currentQualification = course?.progress
+  const currentQualification = course?.progress?.length
     ? course?.progress[0]?.qualification
     : null;
 
@@ -48,6 +48,9 @@ const CourseCardForm = ({ course, careerId }: Props) => {
     },
   });
 
+  const currentSelectStatus = form.watch('status');
+  const currentSelectQualification = form.watch('qualification');
+
   const updateUserCourse = trpc.user.updateUserCourse.useMutation({
     onMutate: async (newProgressData) => {
       await utils.career.getById.cancel({ id: careerId });
@@ -56,10 +59,7 @@ const CourseCardForm = ({ course, careerId }: Props) => {
 
       const progressData = {
         status: newProgressData.status,
-        qualification:
-          newProgressData.status === 'APROBADA'
-            ? newProgressData.qualification
-            : null,
+        qualification: newProgressData.qualification,
       };
 
       // @ts-ignore
@@ -103,14 +103,27 @@ const CourseCardForm = ({ course, careerId }: Props) => {
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    updateUserCourse.mutate({ courseId: course.id, ...data });
+    const submitedData = {
+      courseId: course.id,
+      status: data.status,
+      qualification: data.status === 'APROBADA' ? data.qualification : null,
+    };
+    updateUserCourse.mutate({ ...submitedData });
   }
 
   return (
     <DialogContent
-      onCloseAutoFocus={() => form.reset()}
+      onCloseAutoFocus={() =>
+        form.reset({
+          status: currentSelectStatus,
+          qualification: currentQualification,
+        })
+      }
       onInteractOutside={() => {
-        form.reset();
+        form.reset({
+          status: currentSelectStatus,
+          qualification: currentQualification,
+        });
       }}
       asChild={false}
       className="max-w-[calc(100dvw-1rem)] sm:max-w-[40rem] border-none rounded-2xl"
@@ -121,38 +134,37 @@ const CourseCardForm = ({ course, careerId }: Props) => {
           Modifica el estado y/o la calificación de la materia.
         </DialogDescription>
       </DialogHeader>
-      <div className="grid gap-4 py-4">
+      <div className="flex">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="w-full space-y-6"
+            className="flex flex-col justify-center items-center w-full space-y-6"
           >
-            <div className="flex justify-between">
+            <div className="flex gap-20">
               <QualificationSelectFormField course={course} form={form} />
               <StatusSelectFormField course={course} form={form} />
             </div>
-            <DialogClose asChild>
-              <Button
-                disabled={
-                  (form.watch('status') !== 'APROBADA' &&
-                    form.watch('status') === currentStatus) ||
-                  (form.watch('status') === 'PENDIENTE' &&
-                    currentStatus === undefined) ||
-                  (form.watch('status') === 'APROBADA' &&
-                    (form.watch('qualification') === undefined ||
-                      Number(form.watch('qualification')) ===
-                        currentQualification))
-                }
-                type="submit"
-              >
-                Guardar
-              </Button>
-            </DialogClose>
+            <div className="flex w-full">
+              <DialogClose asChild>
+                <Button
+                  disabled={
+                    (currentSelectStatus !== 'APROBADA' &&
+                      currentSelectStatus === currentStatus) ||
+                    (currentSelectStatus === 'PENDIENTE' &&
+                      currentStatus === undefined) ||
+                    (currentSelectStatus === 'APROBADA' &&
+                      (currentSelectQualification === undefined ||
+                        currentSelectQualification === null ||
+                        currentSelectQualification === currentQualification))
+                  }
+                  type="submit"
+                >
+                  Guardar
+                </Button>
+              </DialogClose>
+            </div>
           </form>
         </Form>
-        <DialogFooter>
-          <Button>Más información</Button>
-        </DialogFooter>
       </div>
       <DialogFooter></DialogFooter>
     </DialogContent>

@@ -40,7 +40,7 @@ const QualificationSelectFormField = ({ form, course }: Props) => {
             disabled={form.watch('status') !== 'APROBADA'}
             onValueChange={field.onChange}
             defaultValue={
-              course?.progress
+              course?.progress?.length
                 ? course?.progress[0]?.qualification?.toString()
                 : undefined
             }
@@ -52,7 +52,7 @@ const QualificationSelectFormField = ({ form, course }: Props) => {
             </FormControl>
             <SelectContent className="border-none">
               <ScrollArea className="h-[200px] w-auto rounded-md pr-3">
-                {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value) => (
+                {[4, 5, 6, 7, 8, 9, 10].map((value) => (
                   <SelectItem key={value} value={value.toString()}>
                     {value.toString()}
                   </SelectItem>
@@ -60,7 +60,7 @@ const QualificationSelectFormField = ({ form, course }: Props) => {
               </ScrollArea>
             </SelectContent>
           </Select>
-          <FormDescription>Estatado de la asignatura.</FormDescription>
+          <FormDescription>Calificación de la asignatura.</FormDescription>
           <FormMessage />
         </FormItem>
       )}
