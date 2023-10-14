@@ -1,9 +1,9 @@
-'use client';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { NavItems } from '@/components/NavItems';
-import { Icons } from '@/components/icons';
-import { useState } from 'react';
+"use client";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { NavItems } from "@/components/NavItems";
+import { Icons } from "@/components/icons";
+import { useState } from "react";
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
@@ -17,8 +17,8 @@ export function MobileMenu() {
           </Button>
         </SheetTrigger>
         <SheetContent
-          side={'left'}
-          className="h-screen flex flex-col gap-0 border-none pt-20 rounded-r-lg"
+          side={"left"}
+          className="bg-background-secondary h-screen flex flex-col gap-0 border-none pt-20 rounded-r-lg"
         >
           <NavItems onOpenChange={setOpen} />
         </SheetContent>

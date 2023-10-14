@@ -1,7 +1,7 @@
-import { Card, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Dialog, DialogTrigger } from '@/components/ui/dialog';
-import CourseCardForm from '@/components/courseCardForm/CourseCardForm';
-import CourseStatusChip from '@/components/CourseStatusChip';
+import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import CourseCardForm from "@/components/courseCardForm/CourseCardForm";
+import CourseStatusChip from "@/components/CourseStatusChip";
 
 interface Props {
   course: Course;
@@ -12,7 +12,7 @@ const CourseCard = ({ course, careerId }: Props) => {
   return (
     <Dialog>
       <DialogTrigger disabled asChild>
-        <Card className="flex flex-col justify-between h-28 w-full hover:bg-accent hover:text-foreground transition duration-200 p-3 rounded-2xl border-none cursor-pointer">
+        <Card className="flex flex-col justify-between h-24 w-full hover:bg-accent hover:text-foreground transition duration-200 p-3 rounded-2xl border-none cursor-pointer">
           <CardHeader className="p-0">
             <CardTitle className="text-sm font-medium">{course.name}</CardTitle>
           </CardHeader>
