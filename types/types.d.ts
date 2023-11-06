@@ -23,3 +23,11 @@ type Course = {
     qualification: number | null;
   }[];
 };
+
+type CareerProgress = {
+  TOTAL: number;
+  APROBADA: Course[];
+  PENDIENTE: Course[];
+  REGULARIZADA: Course[];
+  CURSANDO: Course[];
+};

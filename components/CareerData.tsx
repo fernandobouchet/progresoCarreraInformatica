@@ -1,7 +1,8 @@
-"use client";
-import PeriodsTabSkeleton from "@/components/PeriodsTabSkeleton";
-import { PeriodsTab } from "@/components/PeriodsTab";
-import { trpc } from "@/lib/trcp";
+'use client';
+import PeriodsTabSkeleton from '@/components/PeriodsTabSkeleton';
+import { PeriodsTab } from '@/components/PeriodsTab';
+import { trpc } from '@/lib/trcp';
+import { ProgressBar } from './ui/progressBar';
 
 const CareerData = ({ id }: { id: number }) => {
   const {
@@ -16,7 +17,8 @@ const CareerData = ({ id }: { id: number }) => {
 
   return (
     <div className="flex flex-col items-center w-full">
-      <h2 className="subtitle">{id === 1 ? "Año" : "Cuatrimestre"}</h2>
+      <ProgressBar career={career} />
+      <h2 className="subtitle">{id === 1 ? 'Año' : 'Cuatrimestre'}</h2>
       <PeriodsTab career={career} />
     </div>
   );
