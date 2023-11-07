@@ -1,12 +1,10 @@
-import { Icons } from '@/components/icons';
+import Separator from '@/components/ui/separator';
 
 const PageCreditos = () => {
   return (
     <main className="cardsPageContainer">
       <h1 className="title">Créditos</h1>
-      <div className="py-4 lg:py-8">
-        <Icons.line />
-      </div>
+      <Separator />
     </main>
   );
 };

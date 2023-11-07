@@ -1,13 +1,11 @@
-import { Icons } from '@/components/icons';
 import CareersTable from '@/components/table/tables/CareersTable';
+import Separator from '@/components/ui/separator';
 
 const AdminCarrerasPage = () => {
   return (
     <main className="cardsPageContainer">
       <h1 className="title">Carreras</h1>
-      <div className="py-4 lg:py-8">
-        <Icons.line />
-      </div>
+      <Separator />
       <CareersTable />
     </main>
   );
