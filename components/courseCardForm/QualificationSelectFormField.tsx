@@ -14,7 +14,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { UseFormReturn } from 'react-hook-form/dist/types/form';
+import { UseFormReturn } from 'react-hook-form';
 
 interface Props {
   course: Course;
