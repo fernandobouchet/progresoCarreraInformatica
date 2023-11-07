@@ -15,10 +15,12 @@ export const careersRouter = router({
           id: true,
           name: true,
           periods: {
+            orderBy: { order: 'asc' },
             select: {
               id: true,
               order: true,
               courses: {
+                orderBy: { order: 'asc' },
                 select: {
                   id: true,
                   name: true,
