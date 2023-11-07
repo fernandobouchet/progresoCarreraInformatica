@@ -1,24 +1,24 @@
-"use client";
+'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import * as z from 'zod';
 
-import { Form } from "@/components/ui/form";
+import { Form } from '@/components/ui/form';
 import {
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { CourseStatus } from "@prisma/client";
-import { DialogClose } from "@radix-ui/react-dialog";
-import { useToast } from "@/components/ui/use-toast";
-import { trpc } from "@/lib/trcp";
-import QualificationSelectFormField from "./StatusSelectFormField";
-import StatusSelectFormField from "./QualificationSelectFormField";
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { CourseStatus } from '@prisma/client';
+import { DialogClose } from '@radix-ui/react-dialog';
+import { useToast } from '@/components/ui/use-toast';
+import { trpc } from '@/lib/trcp';
+import QualificationSelectFormField from './StatusSelectFormField';
+import StatusSelectFormField from './QualificationSelectFormField';
 
 type Props = {
   course: Course;
@@ -35,7 +35,7 @@ const CourseCardForm = ({ course, careerId }: Props) => {
   const { toast } = useToast();
   const currentStatus = course?.progress?.length
     ? course?.progress[0]?.status
-    : "PENDIENTE";
+    : 'PENDIENTE';
   const currentQualification = course?.progress?.length
     ? course?.progress[0]?.qualification
     : null;
@@ -48,8 +48,8 @@ const CourseCardForm = ({ course, careerId }: Props) => {
     },
   });
 
-  const currentSelectStatus = form.watch("status");
-  const currentSelectQualification = form.watch("qualification");
+  const currentSelectStatus = form.watch('status');
+  const currentSelectQualification = form.watch('qualification');
 
   const updateUserCourse = trpc.user.updateUserCourse.useMutation({
     onMutate: async (newProgressData) => {
@@ -88,16 +88,9 @@ const CourseCardForm = ({ course, careerId }: Props) => {
         context?.previousCareerData
       );
       toast({
-        variant: "destructive",
-        title: "Falló en realizar la modificación!",
-        description: `Hubo un error al intentar modificar la asignatura ${course.name}, por favor intente nuevamente.`,
-      });
-    },
-    onSuccess: () => {
-      toast({
-        variant: "default",
-        title: "Modificación realizada con éxito!",
-        description: `Se modificó exitosamente la asignatura ${course.name}.`,
+        variant: 'destructive',
+        title: 'Error en la modificación!',
+        description: `Lamentablemente, se ha producido un error al intentar modificar la asignatura ${course.name}. Por favor, inténtelo de nuevo.`,
       });
     },
   });
@@ -106,7 +99,7 @@ const CourseCardForm = ({ course, careerId }: Props) => {
     const submitedData = {
       courseId: course.id,
       status: data.status,
-      qualification: data.status === "APROBADA" ? data.qualification : null,
+      qualification: data.status === 'APROBADA' ? data.qualification : null,
     };
     updateUserCourse.mutate({ ...submitedData });
   }
@@ -115,13 +108,13 @@ const CourseCardForm = ({ course, careerId }: Props) => {
     <DialogContent
       onCloseAutoFocus={() =>
         form.reset({
-          status: currentSelectStatus,
+          status: currentStatus,
           qualification: currentQualification,
         })
       }
       onInteractOutside={() => {
         form.reset({
-          status: currentSelectStatus,
+          status: currentStatus,
           qualification: currentQualification,
         });
       }}
@@ -149,11 +142,11 @@ const CourseCardForm = ({ course, careerId }: Props) => {
                 <Button
                   variant="secondary"
                   disabled={
-                    (currentSelectStatus !== "APROBADA" &&
+                    (currentSelectStatus !== 'APROBADA' &&
                       currentSelectStatus === currentStatus) ||
-                    (currentSelectStatus === "PENDIENTE" &&
+                    (currentSelectStatus === 'PENDIENTE' &&
                       currentStatus === undefined) ||
-                    (currentSelectStatus === "APROBADA" &&
+                    (currentSelectStatus === 'APROBADA' &&
                       (currentSelectQualification === undefined ||
                         currentSelectQualification === null ||
                         currentSelectQualification === currentQualification))
