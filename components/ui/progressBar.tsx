@@ -1,5 +1,6 @@
 import { getCoursesProgress } from '@/lib/functions';
 import { Chip } from './chip';
+import AverageQualificationCard from './averageQualificationCard';
 
 interface Props {
   career: Career;
@@ -8,46 +9,8 @@ interface Props {
 const ProgressBar = ({ career }: Props) => {
   const progress = getCoursesProgress(career);
   return (
-    <div className="relative w-full py-4">
-      <div className="flex items-center justify-center md:justify-end gap-2 pb-3">
-        <div className="flex items-center gap-1">
-          <Chip
-            variant="success"
-            className="rounded-full py-[0.01rem] px-[0.30rem]"
-          >
-            {progress.APROBADA.length}
-          </Chip>
-          <span className="text-xs">Aprobadas</span>
-        </div>
-        <div className="flex items-center gap-1">
-          <Chip
-            variant="default"
-            className="rounded-full py-[0.01rem] px-[0.30rem]"
-          >
-            {progress.CURSANDO.length}
-          </Chip>
-          <span className="text-xs">Cursando</span>
-        </div>
-        <div className="flex items-center gap-1">
-          <Chip
-            variant="caution"
-            className="rounded-full py-[0.01rem] px-[0.30rem]"
-          >
-            {progress.REGULARIZADA.length}
-          </Chip>
-          <span className="text-xs">Regularizadas</span>
-        </div>
-        <div className="flex items-center gap-1">
-          <Chip
-            variant="muted"
-            className="rounded-full py-[0.01rem] px-[0.30rem]"
-          >
-            {progress.PENDIENTE.length}
-          </Chip>
-          <span className="text-xs">Pendientes</span>
-        </div>
-      </div>
-      <div className="overflow-hidden h-5 text-xs flex rounded-full">
+    <div className="relative w-full py-4 flex flex-col items-center gap-3 lg:max-w-2xl">
+      <div className="overflow-hidden h-5 text-xs flex rounded-full w-full">
         <div
           style={{
             width: `${(
@@ -139,6 +102,47 @@ const ProgressBar = ({ career }: Props) => {
         >
           {((progress.PENDIENTE.length * 100) / progress.TOTAL).toFixed(0)}%
         </div>
+      </div>
+      <div className="flex justify-evenly flex-col items-center gap-3 md:gap-0 md:flex-row w-full">
+        <div className="flex flex-wrap gap-2">
+          <div className="flex items-center gap-1 grow">
+            <Chip
+              variant="success"
+              className="rounded-full py-[0.05rem] px-[0.30rem] w-6 justify-center"
+            >
+              {progress.APROBADA.length}
+            </Chip>
+            <span className="text-xs">Aprobadas</span>
+          </div>
+          <div className="flex items-center gap-1 grow">
+            <Chip
+              variant="default"
+              className="rounded-full py-[0.05rem] px-[0.30rem] w-6 justify-center"
+            >
+              {progress.CURSANDO.length}
+            </Chip>
+            <span className="text-xs">Cursando</span>
+          </div>
+          <div className="flex items-center gap-1 grow">
+            <Chip
+              variant="caution"
+              className="rounded-full py-[0.05rem] px-[0.30rem] w-6 justify-center"
+            >
+              {progress.REGULARIZADA.length}
+            </Chip>
+            <span className="text-xs">Regularizadas</span>
+          </div>
+          <div className="flex items-center gap-1 grow">
+            <Chip
+              variant="muted"
+              className="rounded-full py-[0.05rem] px-[0.30rem] w-6 justify-center"
+            >
+              {progress.PENDIENTE.length}
+            </Chip>
+            <span className="text-xs">Pendientes</span>
+          </div>
+        </div>
+        <AverageQualificationCard courses={progress.APROBADA} />
       </div>
     </div>
   );

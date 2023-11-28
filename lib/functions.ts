@@ -35,4 +35,27 @@ const getCoursesProgress = (career: Career) => {
 
   return coursesProgress;
 };
-export { formatPeriodOrder, capitalizeFirstLetter, getCoursesProgress };
+
+const getCareerAverageQualification = (courses: Course[]) => {
+  let qualificationSum = 0;
+
+  for (const course of courses) {
+    for (const status of course.progress) {
+      if (status.qualification) {
+        qualificationSum += status.qualification;
+      }
+    }
+  }
+  const averageQualification = (qualificationSum / courses.length).toPrecision(
+    2
+  );
+
+  return averageQualification;
+};
+
+export {
+  formatPeriodOrder,
+  capitalizeFirstLetter,
+  getCoursesProgress,
+  getCareerAverageQualification,
+};
