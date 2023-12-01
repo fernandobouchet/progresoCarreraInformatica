@@ -122,11 +122,11 @@ model UserCourse {
 
 model UserCareer {
   id         String       @id @default(cuid())
-  userId     String
   careerId   Int
+  userId     String
 
-  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   career     Career   @relation(fields: [careerId], references: [id], onDelete: Cascade)
-  @@unique([userId, careerId])
-  @@index([careerId])
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@unique([ careerId, userId])
+  @@index([userId])
 }
