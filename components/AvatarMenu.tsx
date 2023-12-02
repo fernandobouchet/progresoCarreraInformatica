@@ -16,6 +16,7 @@ import { LoginModal } from '@/components/LoginModal';
 import { Icons } from '@/components/icons';
 import RoleModePageToggle from '@/components/RoleModePageToggle';
 import { Skeleton } from './ui/skeleton';
+import Link from 'next/link';
 
 export function AvatarMenu() {
   const { status, data: session } = useSession();
@@ -69,10 +70,12 @@ export function AvatarMenu() {
                 <Icons.user className="icon-button" />
                 <span>Perfil</span>
               </DropdownMenuItem>
-              <DropdownMenuItem className="rounded-2xl cursor-pointer">
-                <Icons.settings className="icon-button" />
-                <span>Ajustes</span>
-              </DropdownMenuItem>
+              <Link href="/ajustes">
+                <DropdownMenuItem className="rounded-2xl cursor-pointer">
+                  <Icons.settings className="icon-button" />
+                  <span>Ajustes</span>
+                </DropdownMenuItem>
+              </Link>
             </DropdownMenuGroup>
             {session?.user?.role === 'ADMIN' && <RoleModePageToggle />}
             <DropdownMenuItem
