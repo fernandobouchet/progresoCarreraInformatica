@@ -43,4 +43,47 @@ export const usersRouter = router({
         return { courseId, status, qualification };
       }
     }),
+  getUserCareers: publicProcedure.query(({ ctx }) => {
+    const userId = ctx.session?.user.id;
+    if (!userId) return;
+
+    return ctx.prisma.userCareer.findMany({
+      where: {
+        userId: userId,
+      },
+      select: { careerId: true },
+    });
+  }),
+  updateUserCareers: publicProcedure
+    .input(
+      z.object({
+        careerIds: z.array(z.number()),
+      })
+    )
+    .mutation(async ({ input: { careerIds }, ctx }) => {
+      const userId = ctx.session?.user.id;
+      if (!userId) return;
+
+      const existingCareers = await ctx.prisma.userCareer.findMany({
+        where: {
+          userId,
+        },
+        select: {
+          careerId: true,
+        },
+      });
+
+      const newCareers = careerIds.filter(
+        (careerId) => !existingCareers.some((ec) => ec.careerId === careerId)
+      );
+
+      await Promise.all(
+        newCareers.map(async (careerId) => {
+          await ctx.prisma.userCareer.create({
+            data: { userId, careerId },
+          });
+        })
+      );
+      return { careerIds };
+    }),
 });
