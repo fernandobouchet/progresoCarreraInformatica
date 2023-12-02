@@ -1,11 +1,11 @@
 import PeriodsTable from '@/components/table/tables/PeriodsTable';
-import Separator from '@/components/ui/separator';
+import { Divider } from '@/components/ui/divider';
 
 const AdminPeriodosPage = () => {
   return (
     <main className="cardsPageContainer">
       <h1 className="title">Periodos</h1>
-      <Separator />
+      <Divider />
 
       <PeriodsTable />
     </main>

@@ -1,11 +1,11 @@
 import CareersTable from '@/components/table/tables/CareersTable';
-import Separator from '@/components/ui/separator';
+import { Divider } from '@/components/ui/divider';
 
 const AdminCarrerasPage = () => {
   return (
     <main className="cardsPageContainer">
       <h1 className="title">Carreras</h1>
-      <Separator />
+      <Divider />
       <CareersTable />
     </main>
   );

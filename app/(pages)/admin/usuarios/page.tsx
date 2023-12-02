@@ -1,11 +1,11 @@
 import UsersTable from '@/components/table/tables/UsersTable';
-import Separator from '@/components/ui/separator';
+import { Divider } from '@/components/ui/divider';
 
 const AdminUsuariosPage = () => {
   return (
     <main className="cardsPageContainer">
       <h1 className="title">Usuarios</h1>
-      <Separator />
+      <Divider />
       <UsersTable />
     </main>
   );
