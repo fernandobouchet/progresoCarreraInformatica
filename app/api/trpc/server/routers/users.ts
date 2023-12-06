@@ -77,13 +77,33 @@ export const usersRouter = router({
         (careerId) => !existingCareers.some((ec) => ec.careerId === careerId)
       );
 
-      await Promise.all(
-        newCareers.map(async (careerId) => {
-          await ctx.prisma.userCareer.create({
-            data: { userId, careerId },
-          });
-        })
-      );
+      const careersToDelete = existingCareers
+        .filter((careerId) => !careerIds.some((ec) => ec === careerId.careerId))
+        .map((c) => c.careerId);
+
+      await ctx.prisma.$transaction(async (tx) => {
+        await Promise.all(
+          careersToDelete.map(async (careerId) => {
+            await tx.userCareer.delete({
+              where: {
+                careerId_userId: {
+                  careerId,
+                  userId,
+                },
+              },
+            });
+          })
+        );
+
+        await Promise.all(
+          newCareers.map(async (careerId) => {
+            await tx.userCareer.create({
+              data: { userId, careerId },
+            });
+          })
+        );
+      });
+
       return { careerIds };
     }),
 });
