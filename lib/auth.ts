@@ -31,5 +31,8 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
   },
+  pages: {
+    signIn: '/login',
+  },
   debug: process.env.NODE_ENV !== 'production',
 };

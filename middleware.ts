@@ -11,6 +11,9 @@ export default withAuth(
     }
   },
   {
+    pages: {
+      signIn: '/login',
+    },
     callbacks: {
       authorized: (params) => {
         let { token } = params;
@@ -20,4 +23,4 @@ export default withAuth(
   }
 );
 
-export const config = { matcher: ['/admin(.*)'] };
+export const config = { matcher: ['/admin(.*)', '/(.*)'] };
