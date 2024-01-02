@@ -1,5 +1,6 @@
 import './globals.css';
 import { Open_Sans } from 'next/font/google';
+import { cookies } from 'next/headers';
 import AuthProvider from '@/providers/AuthProvider';
 import ThemeProvider from '@/providers/ThemeProvider';
 import TrpcProvider from '@/providers/TrpcProvider';
@@ -21,7 +22,7 @@ export default function RootLayout({
     <html lang="es" suppressHydrationWarning>
       <body className={opensans.className}>
         <AuthProvider>
-          <TrpcProvider>
+          <TrpcProvider cookies={cookies().toString()}>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
               {children}
               <Toaster />

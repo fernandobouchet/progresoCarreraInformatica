@@ -1,8 +1,8 @@
-import { publicProcedure, router } from '@/app/api/trpc/server/trpc';
+import { createTRPCRouter, publicProcedure } from '@/server/api/trpc';
 import { CourseStatus } from '@prisma/client';
 import { z } from 'zod';
 
-export const usersRouter = router({
+export const usersRouter = createTRPCRouter({
   getAll: publicProcedure.query(({ ctx }) => {
     return ctx.prisma.user.findMany();
   }),
