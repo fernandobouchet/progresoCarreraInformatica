@@ -16,7 +16,7 @@ import { Button } from '@/components/ui/button';
 import { CourseStatus } from '@prisma/client';
 import { DialogClose } from '@radix-ui/react-dialog';
 import { useToast } from '@/components/ui/use-toast';
-import { trpc } from '@/lib/trcp';
+import { api } from '@/lib/trcp';
 import QualificationSelectFormField from './StatusSelectFormField';
 import StatusSelectFormField from './QualificationSelectFormField';
 
@@ -31,7 +31,7 @@ const FormSchema = z.object({
 });
 
 const CourseCardForm = ({ course, careerId }: Props) => {
-  const utils = trpc.useContext();
+  const utils = api.useContext();
   const { toast } = useToast();
   const currentStatus = course?.progress?.length
     ? course?.progress[0]?.status
@@ -51,7 +51,7 @@ const CourseCardForm = ({ course, careerId }: Props) => {
   const currentSelectStatus = form.watch('status');
   const currentSelectQualification = form.watch('qualification');
 
-  const updateUserCourse = trpc.user.updateUserCourse.useMutation({
+  const updateUserCourse = api.user.updateUserCourse.useMutation({
     onMutate: async (newProgressData) => {
       await utils.career.getById.cancel({ id: careerId });
 

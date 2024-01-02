@@ -1,7 +1,7 @@
 'use client';
 import PeriodsTabSkeleton from '@/components/PeriodsTabSkeleton';
 import { PeriodsTab } from '@/components/PeriodsTab';
-import { trpc } from '@/lib/trcp';
+import { api } from '@/lib/trcp';
 import { ProgressBar } from './ui/progressBar';
 
 const CareerData = ({ id }: { id: number }) => {
@@ -9,7 +9,7 @@ const CareerData = ({ id }: { id: number }) => {
     data: career,
     isLoading,
     isError,
-  } = trpc.career.getById.useQuery({ id: id });
+  } = api.career.getById.useQuery({ id: id });
 
   if (isLoading) return <PeriodsTabSkeleton />;
 

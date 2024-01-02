@@ -2,10 +2,10 @@
 import { DataTable } from '@/components/table/DataTable';
 import LoadingBar from '@/components/ui/LoadingBar';
 import { UserColumn } from '../columns/UserColumn';
-import { trpc } from '@/lib/trcp';
+import { api } from '@/lib/trcp';
 
 const UsersTable = () => {
-  const { data: users, isLoading, isError } = trpc.user.getAll.useQuery();
+  const { data: users, isLoading, isError } = api.user.getAll.useQuery();
 
   if (isLoading) return <LoadingBar />;
 

@@ -2,7 +2,7 @@
 import { LinkWithIcon } from '@/components/LinkWithIcon';
 import ThemeToggle from '@/components/ThemeToggle';
 import { Icons } from '@/components/icons';
-import { trpc } from '@/lib/trcp';
+import { api } from '@/lib/trcp';
 import { usePathname } from 'next/navigation';
 import LoadingBar from './ui/LoadingBar';
 
@@ -97,7 +97,7 @@ interface Props {
 const NavItems = ({ onOpenChange }: Props) => {
   const pathname = usePathname();
 
-  const { data: selectedCareers } = trpc.user.getUserCareers.useQuery();
+  const { data: selectedCareers } = api.user.getUserCareers.useQuery();
 
   if (!selectedCareers || selectedCareers === undefined) {
     return <LoadingBar />;

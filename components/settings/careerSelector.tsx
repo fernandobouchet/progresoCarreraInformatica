@@ -16,7 +16,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { toast } from '@/components/ui/use-toast';
-import { trpc } from '@/lib/trcp';
+import { api } from '@/lib/trcp';
 
 const items = [
   {
@@ -56,7 +56,7 @@ const FormSchema = z.object({
 });
 
 const CareerSelector = () => {
-  const utils = trpc.useContext();
+  const utils = api.useUtils();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -68,7 +68,7 @@ const CareerSelector = () => {
     },
   });
 
-  const updateUserCourse = trpc.user.updateUserCareers.useMutation({
+  const updateUserCourse = api.user.updateUserCareers.useMutation({
     onMutate: async (newData) => {
       await utils.user.getUserCareers.cancel();
 

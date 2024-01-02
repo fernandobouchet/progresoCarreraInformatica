@@ -1,6 +1,6 @@
 'use client';
 
-import { trpc } from '@/lib/trcp';
+import { api } from '@/lib/trcp';
 import LoadingBar from '@/components/ui/LoadingBar';
 import CareerSelector from '@/components/settings/careerSelector';
 
@@ -9,7 +9,7 @@ const Ajustes = () => {
     data: selectedCareers,
     isLoading,
     isError,
-  } = trpc.user.getUserCareers.useQuery();
+  } = api.user.getUserCareers.useQuery();
 
   if (isLoading) return <LoadingBar />;
 

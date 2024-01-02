@@ -2,10 +2,10 @@
 import { DataTable } from '@/components/table/DataTable';
 import LoadingBar from '@/components/ui/LoadingBar';
 import { PeriodColumn } from '../columns/PeriodColumn';
-import { trpc } from '@/lib/trcp';
+import { api } from '@/lib/trcp';
 
 const PeriodsTable = () => {
-  const { data: periods, isLoading, isError } = trpc.period.getAll.useQuery();
+  const { data: periods, isLoading, isError } = api.period.getAll.useQuery();
 
   if (isLoading) return <LoadingBar />;
 
