@@ -95,14 +95,14 @@ const CourseForm = ({ form, careerId, course }: Props) => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col justify-center items-center w-full space-y-6"
       >
-        <div className="flex gap-10 lg:gap-20">
+        <div className="flex w-full justify-evenly">
           <QualificationSelectFormField course={course} form={form} />
           <StatusSelectFormField course={course} form={form} />
         </div>
         <div className="flex w-full">
           <DialogClose asChild>
             <Button
-              variant="secondary"
+              variant="default"
               disabled={
                 (currentSelectStatus !== 'APROBADA' &&
                   currentSelectStatus === currentStatus) ||

@@ -33,7 +33,7 @@ const StatusSelectFormField = ({ form, course }: Props) => {
       control={form.control}
       name="status"
       render={({ field }) => (
-        <FormItem className="max-w-fit">
+        <FormItem className="w-[35%]">
           <FormLabel>Estado</FormLabel>
           <Select
             onValueChange={field.onChange}
@@ -43,7 +43,7 @@ const StatusSelectFormField = ({ form, course }: Props) => {
                 : 'PENDIENTE'
             }
           >
-            <FormControl>
+            <FormControl className="border-none bg-accent hover:bg-accent/80">
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
@@ -55,7 +55,7 @@ const StatusSelectFormField = ({ form, course }: Props) => {
               <SelectItem value="REGULARIZADA">Regularizada</SelectItem>
             </SelectContent>
           </Select>
-          <FormDescription>Estado de la asignatura.</FormDescription>
+          <FormDescription>Estado de la materia.</FormDescription>
           <FormMessage />
         </FormItem>
       )}

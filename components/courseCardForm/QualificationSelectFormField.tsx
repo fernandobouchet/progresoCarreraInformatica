@@ -34,7 +34,7 @@ const QualificationSelectFormField = ({ form, course }: Props) => {
       control={form.control}
       name="qualification"
       render={({ field }) => (
-        <FormItem className="max-w-fit">
+        <FormItem className="w-[35%]">
           <FormLabel>Calificación</FormLabel>
           <Select
             disabled={form.watch('status') !== 'APROBADA'}
@@ -45,7 +45,7 @@ const QualificationSelectFormField = ({ form, course }: Props) => {
                 : undefined
             }
           >
-            <FormControl>
+            <FormControl className="border-none bg-accent hover:bg-accent/80">
               <SelectTrigger>
                 <SelectValue placeholder="Aún sin calificar" />
               </SelectTrigger>
@@ -60,7 +60,7 @@ const QualificationSelectFormField = ({ form, course }: Props) => {
               </ScrollArea>
             </SelectContent>
           </Select>
-          <FormDescription>Calificación de la asignatura.</FormDescription>
+          <FormDescription>Calificación de la materia.</FormDescription>
           <FormMessage />
         </FormItem>
       )}
