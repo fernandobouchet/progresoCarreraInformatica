@@ -1,4 +1,8 @@
-import { createTRPCRouter, publicProcedure } from '@/server/api/trpc';
+import {
+  createTRPCRouter,
+  publicProcedure,
+  protectedProcedure,
+} from '@/server/api/trpc';
 import { CourseStatus } from '@prisma/client';
 import { z } from 'zod';
 
@@ -6,7 +10,7 @@ export const usersRouter = createTRPCRouter({
   getAll: publicProcedure.query(({ ctx }) => {
     return ctx.prisma.user.findMany();
   }),
-  updateUserCourse: publicProcedure
+  updateUserCourse: protectedProcedure
     .input(
       z.object({
         courseId: z.number(),
@@ -43,7 +47,7 @@ export const usersRouter = createTRPCRouter({
         return { courseId, status, qualification };
       }
     }),
-  getUserCareers: publicProcedure.query(({ ctx }) => {
+  getUserCareers: protectedProcedure.query(({ ctx }) => {
     const userId = ctx.session?.user.id;
     if (!userId) return;
 
@@ -54,7 +58,7 @@ export const usersRouter = createTRPCRouter({
       select: { careerId: true },
     });
   }),
-  updateUserCareers: publicProcedure
+  updateUserCareers: protectedProcedure
     .input(
       z.object({
         careerIds: z.array(z.number()),

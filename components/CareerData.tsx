@@ -9,9 +9,9 @@ const CareerData = ({ id }: { id: number }) => {
     data: career,
     isLoading,
     isError,
-  } = api.career.getById.useQuery({ id: id });
+  } = api.career.getByIdByUser.useQuery({ id: id });
 
-  if (isLoading) return <PeriodsTabSkeleton />;
+  if (!isLoading) return <PeriodsTabSkeleton />;
 
   if (isError || career === undefined || career === null) return <h2>Error</h2>;
 
