@@ -28,9 +28,11 @@ const CourseForm = ({ form, careerId, course }: Props) => {
 
   const updateUserCourse = api.user.updateUserCourse.useMutation({
     onMutate: async (newProgressData) => {
-      await utils.career.getById.cancel({ id: careerId });
+      await utils.career.getByIdByUser.cancel({ id: careerId });
 
-      const previousCareerData = utils.career.getById.getData({ id: careerId });
+      const previousCareerData = utils.career.getByIdByUser.getData({
+        id: careerId,
+      });
 
       const progressData = {
         status: newProgressData.status,
@@ -38,7 +40,7 @@ const CourseForm = ({ form, careerId, course }: Props) => {
       };
 
       // @ts-ignore
-      utils.career.getById.setData({ id: careerId }, (oldData) => {
+      utils.career.getByIdByUser.setData({ id: careerId }, (oldData) => {
         if (!oldData) {
           return null;
         }
@@ -58,7 +60,7 @@ const CourseForm = ({ form, careerId, course }: Props) => {
       return { previousCareerData };
     },
     onError: (err, _newProgressData, context) => {
-      utils.career.getById.setData(
+      utils.career.getByIdByUser.setData(
         { id: careerId },
         context?.previousCareerData
       );
