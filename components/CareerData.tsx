@@ -11,9 +11,14 @@ const CareerData = ({ id }: { id: number }) => {
     isError,
   } = api.career.getByIdByUser.useQuery({ id: id });
 
-  if (!isLoading) return <PeriodsTabSkeleton />;
+  if (isLoading) return <PeriodsTabSkeleton />;
 
-  if (isError || career === undefined || career === null) return <h2>Error</h2>;
+  if (isError || career === undefined || career === null)
+    return (
+      <p className="text-md text-center">
+        Hubo un error al obtener la información. Por favor intentelo nuevamente.
+      </p>
+    );
 
   return (
     <div className="flex flex-col items-center w-full">
