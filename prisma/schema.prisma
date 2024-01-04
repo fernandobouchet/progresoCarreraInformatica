@@ -95,7 +95,7 @@ model Course {
   order           Int
   name            String
   area            String?
-  description     String?
+  description     String? @db.Text
   hsWeekly        Int?
   hsTotal         Int?
   hasCorrelatives Boolean  @default(false)
