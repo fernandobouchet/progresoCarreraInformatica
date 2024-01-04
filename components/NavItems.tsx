@@ -103,11 +103,14 @@ const NavItems = ({ onOpenChange }: Props) => {
     return <LoadingBar />;
   }
 
-  const selectedRootItems = RootItems.filter(
-    (item) =>
-      item.optionId === null ||
-      selectedCareers?.some((career) => career.careerId === item.optionId)
-  );
+  const selectedRootItems =
+    selectedCareers.length >= 1
+      ? RootItems.filter(
+          (item) =>
+            item.optionId === null ||
+            selectedCareers?.some((career) => career.careerId === item.optionId)
+        )
+      : RootItems;
 
   return (
     <>

@@ -58,13 +58,17 @@ const FormSchema = z.object({
 const CareerSelector = () => {
   const utils = api.useUtils();
 
+  const userCareers = utils.user.getUserCareers
+    .getData()
+    ?.map((item) => item.careerId.toString());
+
+  const defaultCareers = items.map((item) => item.id);
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       items:
-        utils.user.getUserCareers
-          .getData()
-          ?.map((item) => item.careerId.toString()) || [],
+        userCareers && userCareers?.length >= 1 ? userCareers : defaultCareers,
     },
   });
 
