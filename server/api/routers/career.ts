@@ -35,34 +35,4 @@ export const careersRouter = createTRPCRouter({
         },
       });
     }),
-  getByIdByUser: protectedProcedure
-    .input(z.object({ id: z.number() }))
-    .query(async ({ input: { id }, ctx }) => {
-      const currentUserId = ctx.session?.user.id;
-      return ctx.prisma.career.findUnique({
-        where: { id },
-        select: {
-          id: true,
-          name: true,
-          periods: {
-            orderBy: { order: 'asc' },
-            select: {
-              id: true,
-              order: true,
-              courses: {
-                orderBy: { order: 'asc' },
-                select: {
-                  id: true,
-                  name: true,
-                  progress:
-                    currentUserId === undefined
-                      ? false
-                      : { where: { userId: currentUserId } },
-                },
-              },
-            },
-          },
-        },
-      });
-    }),
 });

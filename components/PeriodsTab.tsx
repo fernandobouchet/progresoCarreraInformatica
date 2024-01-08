@@ -24,11 +24,7 @@ const PeriodsTab = ({ career }: Props) => {
         <TabsContent key={period.id} value={period.order.toString()}>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">
             {period.courses.map((course) => (
-              <CourseCard
-                key={course.id}
-                course={course}
-                careerId={career.id}
-              />
+              <CourseCard key={course.id} course={course} />
             ))}
           </div>
         </TabsContent>

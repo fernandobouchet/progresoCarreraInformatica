@@ -40,11 +40,12 @@ const getCareerAverageQualification = (courses: Course[]) => {
   let qualificationSum = 0;
 
   for (const course of courses) {
-    for (const status of course.progress) {
-      if (status.qualification) {
-        qualificationSum += status.qualification;
+    if (course.progress)
+      for (const status of course.progress) {
+        if (status.qualification) {
+          qualificationSum += status.qualification;
+        }
       }
-    }
   }
   const averageQualification = (qualificationSum / courses.length).toPrecision(
     2
@@ -53,9 +54,40 @@ const getCareerAverageQualification = (courses: Course[]) => {
   return averageQualification;
 };
 
+const updateUserCareerCache = (
+  careerData: Career,
+  userCourses: UserCourse[]
+) => {
+  // Loop through each period
+  for (const period of careerData.periods) {
+    for (const courses of period.courses) {
+      const matchingCourse = userCourses.find(
+        (course) => course.courseId === courses.id
+      );
+
+      // Update the period's course data if a match is found
+      if (matchingCourse) {
+        if (!courses.progress) {
+          courses.progress = []; // Initialize progress as an array if it doesn't exist and push the new course progress
+          courses.progress.push({
+            qualification: matchingCourse.qualification,
+            status: matchingCourse.status,
+          });
+        } else {
+          // If exists just edit the current course progress
+          courses.progress[0].qualification = matchingCourse.qualification;
+          courses.progress[0].status = matchingCourse.status;
+        }
+      }
+    }
+  }
+  return careerData; // Return the updated careerData
+};
+
 export {
   formatPeriodOrder,
   capitalizeFirstLetter,
   getCoursesProgress,
   getCareerAverageQualification,
+  updateUserCareerCache,
 };

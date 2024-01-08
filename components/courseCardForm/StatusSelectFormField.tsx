@@ -19,8 +19,8 @@ interface Props {
   course: Course;
   form: UseFormReturn<
     {
-      qualification?: number | null;
-      status: 'CURSANDO' | 'PENDIENTE' | 'REGULARIZADA' | 'APROBADA';
+      status: keyof typeof CourseStatus;
+      qualification: number | null;
     },
     any,
     undefined
@@ -39,7 +39,7 @@ const StatusSelectFormField = ({ form, course }: Props) => {
             onValueChange={field.onChange}
             defaultValue={
               course?.progress?.length
-                ? course?.progress[0]?.status
+                ? course?.progress[0]?.status.toString()
                 : 'PENDIENTE'
             }
           >

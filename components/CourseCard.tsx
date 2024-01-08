@@ -1,3 +1,4 @@
+'use client';
 import { Card, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogTrigger } from '@/components/ui/dialog';
 import CourseCardForm from '@/components/courseCardForm/CourseCardForm';
@@ -7,10 +8,9 @@ import { Drawer, DrawerTrigger } from './ui/drawer';
 
 interface Props {
   course: Course;
-  careerId: number;
 }
 
-const CourseCard = ({ course, careerId }: Props) => {
+const CourseCard = ({ course }: Props) => {
   const isDesktop = useMediaQuery('(min-width: 768px)');
 
   if (isDesktop) {
@@ -28,7 +28,7 @@ const CourseCard = ({ course, careerId }: Props) => {
             </CardFooter>
           </Card>
         </DialogTrigger>
-        <CourseCardForm course={course} careerId={careerId} />
+        <CourseCardForm course={course} />
       </Dialog>
     );
   }
@@ -45,7 +45,7 @@ const CourseCard = ({ course, careerId }: Props) => {
           </CardFooter>
         </Card>
       </DrawerTrigger>
-      <CourseCardForm course={course} careerId={careerId} />
+      <CourseCardForm course={course} />
     </Drawer>
   );
 };

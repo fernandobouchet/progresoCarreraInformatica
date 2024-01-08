@@ -20,8 +20,8 @@ interface Props {
   course: Course;
   form: UseFormReturn<
     {
-      qualification?: number | null;
-      status: 'CURSANDO' | 'PENDIENTE' | 'REGULARIZADA' | 'APROBADA';
+      status: keyof typeof CourseStatus;
+      qualification: number | null;
     },
     any,
     undefined

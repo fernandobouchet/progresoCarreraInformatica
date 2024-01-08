@@ -10,8 +10,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { CourseStatus } from '@prisma/client';
-
 import { useMediaQuery } from '@/hooks/use-media-query';
 import {
   DrawerContent,
@@ -20,18 +18,18 @@ import {
   DrawerTitle,
 } from '@/components/ui/drawer';
 import CourseForm from '@/components/courseCardForm/CourseForm';
+import { CourseStatus } from '@prisma/client';
 
 type Props = {
   course: Course;
-  careerId: number;
 };
 
 export const FormSchema = z.object({
   status: z.nativeEnum(CourseStatus),
-  qualification: z.coerce.number().min(0).max(10).nullable().optional(),
+  qualification: z.coerce.number().min(0).max(10).nullable(),
 });
 
-const CourseCardForm = ({ course, careerId }: Props) => {
+const CourseCardForm = ({ course }: Props) => {
   const isDesktop = useMediaQuery('(min-width: 768px)');
 
   const currentStatus = course?.progress?.length
@@ -74,7 +72,7 @@ const CourseCardForm = ({ course, careerId }: Props) => {
           </DialogDescription>
         </DialogHeader>
         <div className="flex">
-          <CourseForm form={form} careerId={careerId} course={course} />
+          <CourseForm form={form} course={course} />
         </div>
       </DialogContent>
     );
@@ -103,7 +101,7 @@ const CourseCardForm = ({ course, careerId }: Props) => {
         </DrawerDescription>
       </DrawerHeader>
       <div className="flex py-4">
-        <CourseForm form={form} careerId={careerId} course={course} />
+        <CourseForm form={form} course={course} />
       </div>
     </DrawerContent>
   );

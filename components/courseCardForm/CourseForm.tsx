@@ -12,58 +12,58 @@ import { UseFormReturn } from 'react-hook-form';
 interface Props {
   form: UseFormReturn<
     {
-      status: 'CURSANDO' | 'PENDIENTE' | 'REGULARIZADA' | 'APROBADA';
-      qualification?: number | null | undefined;
+      status: keyof typeof CourseStatus;
+      qualification: number | null;
     },
     any,
     undefined
   >;
-  careerId: number;
   course: Course;
 }
 
-const CourseForm = ({ form, careerId, course }: Props) => {
+const CourseForm = ({ form, course }: Props) => {
   const utils = api.useUtils();
   const { toast } = useToast();
 
   const updateUserCourse = api.user.updateUserCourse.useMutation({
     onMutate: async (newProgressData) => {
-      await utils.career.getByIdByUser.cancel({ id: careerId });
+      await utils.user.getUserCourses.cancel();
 
-      const previousCareerData = utils.career.getByIdByUser.getData({
-        id: careerId,
-      });
+      const previousCareerData = utils.user.getUserCourses.getData();
 
       const progressData = {
+        courseId: newProgressData.courseId,
         status: newProgressData.status,
         qualification: newProgressData.qualification,
       };
 
       // @ts-ignore
-      utils.career.getByIdByUser.setData({ id: careerId }, (oldData) => {
+      utils.user.getUserCourses.setData(undefined, (oldData) => {
         if (!oldData) {
           return null;
         }
 
-        const updatedPeriods = oldData.periods.map((cachedPeriod) => ({
-          ...cachedPeriod,
-          courses: cachedPeriod.courses.map((cachedCourse) =>
-            cachedCourse.id === newProgressData.courseId
-              ? { ...cachedCourse, progress: [progressData] }
-              : cachedCourse
-          ),
-        }));
+        const findedCourseIndex = oldData.findIndex(
+          (course) => course.courseId === progressData.courseId
+        );
 
-        return { ...oldData, periods: updatedPeriods };
+        let updatedCourses = [...oldData];
+
+        if (findedCourseIndex === -1) {
+          // Course not found, add it to the array
+          updatedCourses = [...updatedCourses, progressData];
+        } else {
+          // Course found, modify it in the array
+          updatedCourses[findedCourseIndex] = {
+            ...progressData,
+          };
+        }
+        return updatedCourses;
       });
-
       return { previousCareerData };
     },
     onError: (err, _newProgressData, context) => {
-      utils.career.getByIdByUser.setData(
-        { id: careerId },
-        context?.previousCareerData
-      );
+      utils.user.getUserCourses.setData(undefined, context?.previousCareerData);
       toast({
         variant: 'destructive',
         title: 'Error en la modificación!',

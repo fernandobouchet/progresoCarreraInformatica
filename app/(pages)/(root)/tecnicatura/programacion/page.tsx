@@ -1,12 +1,22 @@
 import CareerData from '@/components/CareerData';
 import { Divider } from '@/components/ui/divider';
+import { api } from '@/trpc/server';
 
-const PageProgramacion = () => {
+const PageProgramacion = async () => {
+  const data = await api.career.getById.query({ id: 3 });
+
+  if (!data)
+    return (
+      <p className="text-md text-center">
+        Hubo un error al obtener la información. Por favor intentelo nuevamente.
+      </p>
+    );
+
   return (
     <main className="cardsPageContainer">
       <h1 className="text-2xl lg:text-3xl">Tecnicatura en programación</h1>
       <Divider />
-      <CareerData id={3} />
+      <CareerData careerData={data} />
     </main>
   );
 };

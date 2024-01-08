@@ -3,10 +3,11 @@ import { capitalizeFirstLetter } from '@/lib/functions';
 import { CourseStatus } from '@prisma/client';
 
 type Props = {
-  progress: {
-    status: CourseStatus;
-    qualification: number | null;
-  }[];
+  progress?:
+    | {
+        status: keyof typeof CourseStatus;
+        qualification: number | null;
+      }[];
 };
 
 const CourseStatusChip = ({ progress }: Props) => {

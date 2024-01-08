@@ -7,6 +7,16 @@ import { CourseStatus } from '@prisma/client';
 import { z } from 'zod';
 
 export const usersRouter = createTRPCRouter({
+  getUserCourses: protectedProcedure.query(({ ctx }) => {
+    const userId = ctx.session?.user.id;
+
+    return ctx.prisma.userCourse.findMany({
+      where: {
+        userId: userId,
+      },
+      select: { courseId: true, qualification: true, status: true },
+    });
+  }),
   getAll: publicProcedure.query(({ ctx }) => {
     return ctx.prisma.user.findMany();
   }),
@@ -15,7 +25,7 @@ export const usersRouter = createTRPCRouter({
       z.object({
         courseId: z.number(),
         status: z.nativeEnum(CourseStatus),
-        qualification: z.number().nullable().optional(),
+        qualification: z.number().nullable(),
       })
     )
     .mutation(async ({ input: { courseId, status, qualification }, ctx }) => {
